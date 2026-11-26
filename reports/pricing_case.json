@@ -1,0 +1,50 @@
+{
+  "label": "IllustrativeCo \u2014 fictional operating case, calibrated to Salesforce reported gross margin",
+  "assumptions": {
+    "customers": 10000,
+    "adoption": 0.2,
+    "requests": 2000,
+    "input_tokens": 2000,
+    "output_tokens": 500,
+    "input_rate": 2.0,
+    "output_rate": 8.0,
+    "subscription": 25.0,
+    "usage_price": 0.015,
+    "fixed_cost": 10000,
+    "core_mrr_per_account": 100
+  },
+  "results": [
+    {
+      "strategy": "Bundled",
+      "monthly_revenue": 0,
+      "inference_cost": 32000.0,
+      "fixed_cost": 10000,
+      "contribution": -42000.0,
+      "gross_margin": null
+    },
+    {
+      "strategy": "Subscription add-on",
+      "monthly_revenue": 50000.0,
+      "inference_cost": 32000.0,
+      "fixed_cost": 10000,
+      "contribution": 8000.0,
+      "gross_margin": 0.36
+    },
+    {
+      "strategy": "Usage-based",
+      "monthly_revenue": 60000.0,
+      "inference_cost": 32000.0,
+      "fixed_cost": 10000,
+      "contribution": 18000.0,
+      "gross_margin": 0.4666666666666667
+    }
+  ],
+  "addon_monthly_break_even": 21.0,
+  "usage_price_break_even": 0.0105,
+  "subscription_request_cap_at_break_even": 2500.0,
+  "bundling_required_retained_accounts_per_year": 540.7068671523795,
+  "bundling_required_annual_churn_improvement_pp": 5.407068671523795,
+  "calibration_gross_margin": 0.7767609873570138,
+  "retention_model": "One full year of core gross profit per retained account; ignores timing, discounting and retention uncertainty.",
+  "recommendation": "In this illustrative case, prefer metered pricing at $0.015/request: it contributes $18,000/month versus $8,000 for the $25 add-on. If choosing the add-on, cap included requests at 2,500 per adopting account to avoid negative contribution under unchanged costs."
+}

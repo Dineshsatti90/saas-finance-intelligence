@@ -1,0 +1,30 @@
+{
+  "label": "IllustrativeCo — fictional operating case, calibrated to Salesforce reported gross margin",
+  "basis": "Customer counts, ARR components, staffing, usage, rates, prices and fixed costs are illustrative assumptions. No synthetic historical financial records are used.",
+  "pricing": {
+    "customers": 10000,
+    "adoption": 0.2,
+    "requests": 2000,
+    "input_tokens": 2000,
+    "output_tokens": 500,
+    "input_rate": 2.0,
+    "output_rate": 8.0,
+    "subscription": 25.0,
+    "usage_price": 0.015,
+    "fixed_cost": 10000,
+    "core_mrr_per_account": 100
+  },
+  "arr": {
+    "opening": 12000000,
+    "new": [1800000, 1900000, 2000000],
+    "expansion": [1200000, 1300000, 1400000],
+    "contraction": [300000, 350000, 400000],
+    "churn": [1200000, 1350000, 1500000]
+  },
+  "staffing": {
+    "opening_fte": 40,
+    "hires": [8, 8, 8],
+    "exits": [4, 4, 4],
+    "loaded_annual_cost": [120000, 125000, 130000]
+  }
+}

@@ -1,0 +1,8 @@
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+exclude = [".venv", "data", "warehouse", "node_modules"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

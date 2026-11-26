@@ -1,0 +1,16 @@
+{
+  "engine": "Microsoft Excel COM",
+  "status": "passed",
+  "base_revenue": 45677500000.0,
+  "checked_at": "2026-11-26T23:09:13.2074667Z",
+  "later_period_revenue": 60294300000.00001,
+  "checks": [
+    "full_recalculation",
+    "case_selector",
+    "later_period_driver",
+    "zero_adopter_boundary",
+    "inputs_restored_and_saved"
+  ],
+  "version": "16.0",
+  "downside_revenue": 43186000000.0
+}

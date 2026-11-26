@@ -1,38 +1,17 @@
 {
-  "base_revenue": 45677500000,
-  "downside_revenue": 43186000000,
-  "checks": [
-    [
-      0,
-      0,
-      0,
-      0
-    ],
-    [
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      0,
-      0,
-      0,
-      0
-    ],
-    [
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      0,
-      0,
-      0,
-      0
-    ]
+  "generator": "XlsxWriter (public PyPI library)",
+  "sheets": [
+    "Summary",
+    "Assumptions",
+    "Forecast",
+    "AI Pricing",
+    "ARR and Staffing",
+    "Actuals",
+    "Checks"
   ],
-  "formula_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
-  "engine": "artifact-tool; native Excel not exercised"
+  "populated_illustrative_case": true,
+  "actual_period": "2026-01-31",
+  "forecast_year1_revenue": 45677500000.0,
+  "case_label": "IllustrativeCo \u2014 fictional operating case, calibrated to Salesforce reported gross margin",
+  "native_excel": "See native_excel_verification.json if available; not inferred from cached values."
 }

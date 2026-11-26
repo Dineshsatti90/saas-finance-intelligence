@@ -1,0 +1,27 @@
+{
+  "features": [
+    "last_growth",
+    "previous_growth",
+    "operating_margin",
+    "ocf_margin",
+    "log_revenue"
+  ],
+  "model": "StandardScaler + Ridge(alpha=10); fixed before evaluation",
+  "training_rule": "Only labels filed on or before each origin; first-published training labels; minimum 12 cases",
+  "target_rule": "Restated actual at the analysis cutoff; same paired targets for every method",
+  "methods": {
+    "flat_revenue": {
+      "targets": 40,
+      "wape": 0.14230763712663244
+    },
+    "trailing_growth": {
+      "targets": 40,
+      "wape": 0.04443056737625871
+    },
+    "operating_driver_ridge": {
+      "targets": 40,
+      "wape": 0.039886832343777934
+    }
+  },
+  "recommendation": "Use operating_driver_ridge as the benchmark for this paired annual panel; complexity alone does not justify replacing the best validated method."
+}
