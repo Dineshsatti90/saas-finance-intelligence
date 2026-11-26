@@ -1,0 +1,28 @@
+[
+  {
+    "case": "base",
+    "revenue": 45677500000.0,
+    "cost_of_revenue": 10197000000.0,
+    "gross_profit": 35480500000.0,
+    "opex": 25837920000.0,
+    "operating_income": 9642580000.0,
+    "gross_margin": 0.7767609873570138,
+    "operating_cash_flow": 16495599999.999998,
+    "capex": 653400000.0,
+    "free_cash_flow": 15842199999.999998,
+    "cash_before_financing_and_acquisitions": 23169200000.0
+  },
+  {
+    "case": "downside",
+    "revenue": 43186000000.0,
+    "cost_of_revenue": 10504520000.0,
+    "gross_profit": 32681480000.0,
+    "opex": 25359440000.0,
+    "operating_income": 7322040000.0,
+    "gross_margin": 0.7567609873570138,
+    "operating_cash_flow": 15595840000.0,
+    "capex": 617760000.0,
+    "free_cash_flow": 14978080000.0,
+    "cash_before_financing_and_acquisitions": 22305080000.0
+  }
+]

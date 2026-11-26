@@ -1,0 +1,38 @@
+{
+  "base_revenue": 45677500000,
+  "downside_revenue": 43186000000,
+  "checks": [
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "formula_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+  "engine": "artifact-tool; native Excel not exercised"
+}

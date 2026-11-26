@@ -1,0 +1,100 @@
+{
+  "company": "Salesforce",
+  "ticker": "CRM",
+  "asof": "2026-11-26",
+  "period_end": "2026-01-31",
+  "currency": "USD",
+  "actuals": {
+    "revenue": 41525000000,
+    "cost_of_revenue": 9270000000,
+    "gross_profit": 32255000000,
+    "operating_income": 8331000000,
+    "research_development": 5993000000,
+    "sales_marketing": 14345000000,
+    "general_admin": 3000000000,
+    "operating_cash_flow": 14996000000,
+    "capex": 594000000,
+    "cash": 7327000000
+  },
+  "cost_of_revenue": 9270000000,
+  "sources": {
+    "revenue": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    },
+    "cost_of_revenue": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "CostOfGoodsAndServicesSold",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    },
+    "gross_profit": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "GrossProfit",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    },
+    "operating_income": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "OperatingIncomeLoss",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    },
+    "research_development": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "ResearchAndDevelopmentExpense",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    },
+    "sales_marketing": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "SellingAndMarketingExpense",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    },
+    "general_admin": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "GeneralAndAdministrativeExpense",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    },
+    "operating_cash_flow": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "NetCashProvidedByUsedInOperatingActivities",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    },
+    "capex": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    },
+    "cash": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/0001108524-26-000060-index.html",
+      "tag": "CashAndCashEquivalentsAtCarryingValue",
+      "filed": "2026-03-02",
+      "period_end": "2026-01-31"
+    }
+  },
+  "planning_assumptions": {
+    "base_growth": 0.1,
+    "downside_growth": 0.04,
+    "base_cogs_ratio": 0.22323901264298615,
+    "downside_cogs_ratio": 0.24323901264298614,
+    "base_opex_growth": 0.08,
+    "downside_opex_growth": 0.06
+  },
+  "unavailable_actuals": [
+    "ARR",
+    "new ARR",
+    "expansion ARR",
+    "churn ARR",
+    "customer count",
+    "AI inference cost",
+    "internal budget",
+    "paid FTE"
+  ]
+}

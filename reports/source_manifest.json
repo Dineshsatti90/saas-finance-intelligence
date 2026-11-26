@@ -1,0 +1,59 @@
+{
+  "retrieved_at": "2026-11-26T21:40:09.396835+00:00",
+  "sources": [
+    {
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2025q4.zip",
+      "file": "2025q4.zip",
+      "bytes": 65830170,
+      "sha256": "2b36ac3850c022cf19edd882e31c3c453c7666677b9fdd2e1f7748fdb5768c6e"
+    },
+    {
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001108524.json",
+      "file": "CRM.json",
+      "bytes": 4730156,
+      "sha256": "a89be8715e056f1cadffdcd9616676ec1949107233b11f430a8183f88ca4ae15"
+    },
+    {
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001373715.json",
+      "file": "NOW.json",
+      "bytes": 3321069,
+      "sha256": "427e2a9a58b944b34e0c7bb9560fdb7183de326e4fa9d880b5957e3025a0687e"
+    },
+    {
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000796343.json",
+      "file": "ADBE.json",
+      "bytes": 4334956,
+      "sha256": "86a5689aa9aa7b0f9e95be21b48b0305376e014c8dbf3b8bb3b4b131f1b6a0c4"
+    },
+    {
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000896878.json",
+      "file": "INTU.json",
+      "bytes": 4471064,
+      "sha256": "15b91e0ad3c1ed3fcf9b161bde1db511f93a8ca5fc4dfd1dcbb4488f22198886"
+    },
+    {
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001327811.json",
+      "file": "WDAY.json",
+      "bytes": 3400335,
+      "sha256": "f3ab5b80cb55104226db9a2a3697a89d50956a3e4e4b88e8f74d8f2f87d9d6e5"
+    },
+    {
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001650372.json",
+      "file": "TEAM.json",
+      "bytes": 1401552,
+      "sha256": "99a2fa0466d8d58943d9b5617fbf3b47ebcb502a279bcfd423052d31c9e2e518"
+    },
+    {
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001404655.json",
+      "file": "HUBS.json",
+      "bytes": 2583100,
+      "sha256": "42a622ad0a950f16f6f08614e19e8f3a34fd37e988f99b2d32ad530d2c403da1"
+    },
+    {
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001640147.json",
+      "file": "SNOW.json",
+      "bytes": 1621510,
+      "sha256": "9d2289f4d9810ef19dfd4f5eef8c90b406db14947ca4b6fcb36dca6c41383144"
+    }
+  ]
+}

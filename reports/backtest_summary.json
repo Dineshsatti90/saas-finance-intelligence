@@ -1,0 +1,12 @@
+{
+  "flat_revenue": {
+    "observations": 58,
+    "mape": 0.19010940616415756,
+    "wape": 0.15000475034925992
+  },
+  "trailing_growth": {
+    "observations": 58,
+    "mape": 0.05162738237231812,
+    "wape": 0.041631259625383325
+  }
+}

@@ -1,0 +1,6 @@
+// Import peer_metrics.csv. Slicers must select one ticker and fiscal period.
+Annual Revenue USD = SELECTEDVALUE(peer_metrics[revenue])
+Operating Income USD = SELECTEDVALUE(peer_metrics[operating_income])
+Operating Margin = DIVIDE([Operating Income USD], [Annual Revenue USD])
+Free Cash Flow USD = SELECTEDVALUE(peer_metrics[operating_cash_flow]) - SELECTEDVALUE(peer_metrics[capex])
+FCF Margin = DIVIDE([Free Cash Flow USD], [Annual Revenue USD])
