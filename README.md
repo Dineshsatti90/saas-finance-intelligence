@@ -1,5 +1,9 @@
 # SaaS Finance Intelligence
 
+[![Checks](https://github.com/Dineshsatti90/saas-finance-intelligence/actions/workflows/check.yml/badge.svg)](https://github.com/Dineshsatti90/saas-finance-intelligence/actions/workflows/check.yml)
+
+[Open the editable Excel model](outputs/saas-finance/saas_financial_planning.xlsx) · [Read the decision memo](reports/decision_memo.md)
+
 Corporate-finance case study combining real SEC financials, point-in-time forecast evaluation, an editable Excel planning model and explicitly assumed AI product economics.
 
 **Business question:** what growth/spending plan can reported SaaS financials support, and under what explicit assumptions could an AI add-on make a positive contribution?
@@ -49,7 +53,7 @@ streamlit run app.py
 
 Run from the repository root. On macOS/Linux use `source .venv/bin/activate` and `export SEC_USER_AGENT='YourPortfolio your-real-contact-email'`. The first run downloads a full SEC release plus eight peer files. After ingestion, the dashboard and checked-in Excel model can be reviewed without an LLM key. `requirements.lock.txt` records tested top-level runtime versions; it is not a complete transitive lockfile.
 
-The checked-in workbook is under `outputs/saas-finance/`. To regenerate it, install `@oai/artifact-tool` in an authoring environment, then run `node build_workbook.mjs`. The authoring dependency is separate from the Python dashboard; all runtime data is produced by the commands above. The generated workbook keeps ordinary Excel formulas and does not require Node to use.
+The checked-in workbook is under `outputs/saas-finance/`. The authoring source uses a separately supplied `@oai/artifact-tool` runtime; it is not a dependency of the Python dashboard or promised as a public package-registry install. When that runtime is available, regenerate with `node build_workbook.mjs`. The delivered workbook contains ordinary Excel formulas and can be reviewed without Node or the authoring package.
 
 ## Financial definitions and controls
 
