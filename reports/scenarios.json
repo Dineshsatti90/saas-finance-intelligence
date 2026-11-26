@@ -7,9 +7,9 @@
     "opex": 25837920000.0,
     "operating_income": 9642580000.0,
     "gross_margin": 0.7767609873570138,
-    "operating_cash_flow": 16495599999.999998,
+    "operating_cash_flow": 16495600000.0,
     "capex": 653400000.0,
-    "free_cash_flow": 15842199999.999998,
+    "free_cash_flow": 15842200000.0,
     "cash_before_financing_and_acquisitions": 23169200000.0
   },
   {
@@ -20,9 +20,9 @@
     "opex": 25359440000.0,
     "operating_income": 7322040000.0,
     "gross_margin": 0.7567609873570138,
-    "operating_cash_flow": 15595840000.0,
+    "operating_cash_flow": 14300260000.000002,
     "capex": 617760000.0,
-    "free_cash_flow": 14978080000.0,
-    "cash_before_financing_and_acquisitions": 22305080000.0
+    "free_cash_flow": 13682500000.000002,
+    "cash_before_financing_and_acquisitions": 21009500000.0
   }
 ]

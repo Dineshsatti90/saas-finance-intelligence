@@ -214,11 +214,14 @@ def run(use_llm: bool = False) -> None:
     (ROOT / "reports/variance_evidence.json").write_text(json.dumps(evidence, indent=2))
     scenarios = [scenario(inputs, c) for c in ["base", "downside"]]
     (ROOT / "reports/scenarios.json").write_text(json.dumps(scenarios, indent=2))
-    (ROOT / "reports/ai_commentary.json").write_text(
+    commentary_path = ROOT / "reports/ai_commentary.json"
+    saved_commentary = json.loads(commentary_path.read_text()) if commentary_path.exists() else {}
+    ai_result = commentary(evidence) if use_llm else saved_commentary
+    if not use_llm and ai_result.get("evidence") != evidence:
+        ai_result = {"status": "not_run_for_current_evidence", "verified_statements": []}
+    commentary_path.write_text(
         json.dumps(
-            commentary(evidence)
-            if use_llm
-            else {"status": "not_run_missing_model", "verified_statements": []},
+            ai_result,
             indent=2,
         )
     )
@@ -234,11 +237,13 @@ Salesforce latest complete annual financials available as of {inputs["asof"]}: y
 ## Forecast evidence
 Rolling annual forecasts use only filings public at the origin date. Flat-revenue WAPE: {backtest["flat_revenue"].get("wape", 0):.2%}; trailing-growth WAPE: {backtest["trailing_growth"].get("wape", 0):.2%}. Evaluation targets use latest available restated actuals at the analysis cutoff. This is a comparison of external forecasts against reported actuals, not internal budget versus actual.
 
+That two-baseline study covers 58 targets. The additional expanding-window driver study compares all three methods on the same 40 eligible targets: driver WAPE 3.99%, trailing growth 4.44%, flat revenue 14.23%. Use that paired result when comparing methods; see [driver benchmark](driver_backtest_summary.json) and its per-origin forecasts.
+
 ## Planning decision
-Use the workbook to explore revenue growth, cost ratios and spending growth. Base/downside growth and spending assumptions are illustrative editable inputs, not management guidance. Use the AI pricing calculator to establish contribution break-even under your own customer, adoption, usage and cost assumptions before proposing a price. No default customer economics are presented as real company data.
+Test metered AI pricing at $0.015/request in the explicitly fictional IllustrativeCo case. At the seeded assumptions it contributes $18,000/month versus $8,000 for the $25 add-on; metered break-even is $0.0105/request. These are scenario results, not observed customer economics. See [pricing decision](pricing_decision.md) for assumptions, usage limits and the conditions that change this recommendation. Base/downside growth and spending assumptions are editable inputs, not management guidance.
 
 ## Missing evidence and model boundaries
-Public GAAP revenue is not ARR. Customer additions, expansion/churn ARR, paid FTE, internal budgets and AI inference bills are unavailable. The ARR/headcount/AI schedules therefore have blank editable inputs and show n.a. until populated. Historical financials remain real. Cash forecast is an operating-cash-flow conversion scenario before financing, acquisitions, investments, repurchases and FX; it is not a full cash balance forecast. Annual peer fiscal ends differ; compare like durations, not calendar-year labels.
+Public GAAP revenue is not ARR. Customer additions, expansion/churn ARR, paid FTE, internal budgets and AI inference bills are unavailable. The populated ARR/headcount/AI schedules are an explicitly fictional operating case, separately labeled from real reported financials. The public builder also supports a blank template. Cash is an operating-cash-flow conversion scenario before financing, acquisitions, investments, repurchases and FX; it is not a full cash balance forecast. Annual peer fiscal ends differ; compare like durations, not calendar-year labels.
 
 ## Source trail
 `annual_facts.csv` contains accession, source URL, tag, fiscal period and filed date for every normalized metric. `source_manifest.json` fingerprints the downloaded inputs. `backtest.csv` contains every forecast origin, target and error. `variance_evidence.json` owns the bridge calculations. AI generated output, when configured, selects verified observations rather than inventing narrative causes.

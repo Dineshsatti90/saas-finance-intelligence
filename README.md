@@ -16,7 +16,7 @@ Real SEC financials, expanding-window forecast evaluation and a populated Excel 
 2. **Metered pricing is the better test hypothesis in the illustrative case:** $0.015/request contributes $18,000/month versus $8,000 for a $25 add-on. The add-on breaks even at $21/account/month under the specified usage and cost assumptions.
 3. **Bundling needs evidence:** covering its $42,000 monthly cost requires about 541 extra accounts retained for a full year—5.41 percentage points of annual churn improvement across the assumed 10,000-account base—in the simplified retention model.
 
-![Project preview](outputs/saas-finance/Summary.png)
+![Project preview](docs/screenshots/overview.jpg)
 
 **Stack:** Python · SQL · DuckDB · scikit-learn · XlsxWriter · Excel · Streamlit · optional local/API LLM.
 
