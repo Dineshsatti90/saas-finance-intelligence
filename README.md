@@ -6,7 +6,7 @@
 
 Real SEC financials, expanding-window forecast evaluation and a populated Excel planning model. Reported company results and illustrative operating assumptions remain separate.
 
-**Dashboard:** `streamlit run app.py` — runs on committed aggregates without a warehouse download.
+**[Open the live dashboard](https://dineshsatti90-saas-finance.streamlit.app/)**
 
 **[Download Excel model](outputs/saas-finance/saas_financial_planning.xlsx)** · [Pricing decision](reports/pricing_decision.md) · [Financial source trail](reports/annual_facts.csv)
 

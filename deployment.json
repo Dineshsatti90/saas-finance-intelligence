@@ -1,0 +1,9 @@
+{
+  "url": "https://dineshsatti90-saas-finance.streamlit.app/",
+  "platform": "Streamlit Community Cloud",
+  "branch": "main",
+  "entrypoint": "app.py",
+  "python": "3.11",
+  "verified_on": "2026-11-26",
+  "data_mode": "committed public aggregates; no private credentials required"
+}
