@@ -1,0 +1,543 @@
+{
+  "model": "qwen2.5:3b",
+  "run_at": "2026-11-26T23:00:34.979299+00:00",
+  "backend": "ollama",
+  "temperature": 0,
+  "seed": 42,
+  "evaluation": "10 deterministic historical bridge cases; exact-value/source-key contract, not narrative quality",
+  "status": "completed",
+  "results": [
+    {
+      "company": "ADBE",
+      "period_end": "2016-12-02",
+      "evidence": {
+        "gross_profit_change": 983328000.0,
+        "revenue_effect_at_prior_margin": 894562915.0440903,
+        "margin_effect_at_current_revenue": 88765084.95590946,
+        "reconciliation_difference": 2.682209014892578e-07
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:42.908645+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 983328000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 894562915.0440903
+          },
+          {
+            "metric": "margin_effect_at_current_revenue",
+            "value": 88765084.95590946
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 983,328,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 894,562,915.04 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "margin_effect_at_current_revenue: 88,765,084.96 USD",
+            "source": "reports/variance_evidence.json#margin_effect_at_current_revenue"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 983328000.0,
+          "revenue_effect_at_prior_margin": 894562915.0440903,
+          "margin_effect_at_current_revenue": 88765084.95590946,
+          "reconciliation_difference": 2.682209014892578e-07
+        }
+      },
+      "elapsed_seconds": 7.93
+    },
+    {
+      "company": "ADBE",
+      "period_end": "2022-12-02",
+      "evidence": {
+        "gross_profit_change": 1521000000.0,
+        "revenue_effect_at_prior_margin": 1605848590.4339561,
+        "margin_effect_at_current_revenue": -84848590.43395522,
+        "reconciliation_difference": -9.238719940185547e-07
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:43.821819+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 1521000000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 1605848590.4339561
+          },
+          {
+            "metric": "margin_effect_at_current_revenue",
+            "value": -84848590.43395522
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 1,521,000,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 1,605,848,590.43 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "margin_effect_at_current_revenue: -84,848,590.43 USD",
+            "source": "reports/variance_evidence.json#margin_effect_at_current_revenue"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 1521000000.0,
+          "revenue_effect_at_prior_margin": 1605848590.4339561,
+          "margin_effect_at_current_revenue": -84848590.43395522,
+          "reconciliation_difference": -9.238719940185547e-07
+        }
+      },
+      "elapsed_seconds": 0.91
+    },
+    {
+      "company": "CRM",
+      "period_end": "2018-01-31",
+      "evidence": {
+        "gross_profit_change": 1564000000.0,
+        "revenue_effect_at_prior_margin": 1546154912.8837266,
+        "margin_effect_at_current_revenue": 17845087.116273385,
+        "reconciliation_difference": 1.862645149230957e-08
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:44.747313+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 1564000000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 1546154912.8837266
+          },
+          {
+            "metric": "margin_effect_at_current_revenue",
+            "value": 17845087.116273385
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 1,564,000,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 1,546,154,912.88 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "margin_effect_at_current_revenue: 17,845,087.12 USD",
+            "source": "reports/variance_evidence.json#margin_effect_at_current_revenue"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 1564000000.0,
+          "revenue_effect_at_prior_margin": 1546154912.8837266,
+          "margin_effect_at_current_revenue": 17845087.116273385,
+          "reconciliation_difference": 1.862645149230957e-08
+        }
+      },
+      "elapsed_seconds": 0.92
+    },
+    {
+      "company": "CRM",
+      "period_end": "2023-01-31",
+      "evidence": {
+        "gross_profit_change": 3526000000.0,
+        "revenue_effect_at_prior_margin": 3571069001.962857,
+        "margin_effect_at_current_revenue": -45069001.962856874,
+        "reconciliation_difference": 1.043081283569336e-07
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:45.674875+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 3526000000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 3571069001.962857
+          },
+          {
+            "metric": "reconciliation_difference",
+            "value": 1.043081283569336e-06
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 3,526,000,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 3,571,069,001.96 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "reconciliation_difference: 0.00 USD",
+            "source": "reports/variance_evidence.json#reconciliation_difference"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 3526000000.0,
+          "revenue_effect_at_prior_margin": 3571069001.962857,
+          "margin_effect_at_current_revenue": -45069001.962856874,
+          "reconciliation_difference": 1.043081283569336e-07
+        }
+      },
+      "elapsed_seconds": 0.93
+    },
+    {
+      "company": "HUBS",
+      "period_end": "2018-12-31",
+      "evidence": {
+        "gross_profit_change": 112740000.0,
+        "revenue_effect_at_prior_margin": 109672555.57330437,
+        "margin_effect_at_current_revenue": 3067444.4266956006,
+        "reconciliation_difference": 2.9336661100387573e-08
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:46.607429+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 112740000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 109672555.57330437
+          },
+          {
+            "metric": "margin_effect_at_current_revenue",
+            "value": 3067444.4266956006
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 112,740,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 109,672,555.57 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "margin_effect_at_current_revenue: 3,067,444.43 USD",
+            "source": "reports/variance_evidence.json#margin_effect_at_current_revenue"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 112740000.0,
+          "revenue_effect_at_prior_margin": 109672555.57330437,
+          "margin_effect_at_current_revenue": 3067444.4266956006,
+          "reconciliation_difference": 2.9336661100387573e-08
+        }
+      },
+      "elapsed_seconds": 0.93
+    },
+    {
+      "company": "HUBS",
+      "period_end": "2024-12-31",
+      "evidence": {
+        "gross_profit_change": 402410000.0,
+        "revenue_effect_at_prior_margin": 386013026.58427906,
+        "margin_effect_at_current_revenue": 16396973.41572096,
+        "reconciliation_difference": -2.0489096641540527e-08
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:47.499635+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 402410000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 386013026.58427906
+          },
+          {
+            "metric": "margin_effect_at_current_revenue",
+            "value": 16396973.41572096
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 402,410,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 386,013,026.58 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "margin_effect_at_current_revenue: 16,396,973.42 USD",
+            "source": "reports/variance_evidence.json#margin_effect_at_current_revenue"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 402410000.0,
+          "revenue_effect_at_prior_margin": 386013026.58427906,
+          "margin_effect_at_current_revenue": 16396973.41572096,
+          "reconciliation_difference": -2.0489096641540527e-08
+        }
+      },
+      "elapsed_seconds": 0.89
+    },
+    {
+      "company": "NOW",
+      "period_end": "2020-12-31",
+      "evidence": {
+        "gross_profit_change": 868000000.0,
+        "revenue_effect_at_prior_margin": 815368786.1271676,
+        "margin_effect_at_current_revenue": 52631213.872832514,
+        "reconciliation_difference": -9.685754776000977e-08
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:48.423755+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 868000000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 815368786.1271676
+          },
+          {
+            "metric": "margin_effect_at_current_revenue",
+            "value": 52631213.872832514
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 868,000,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 815,368,786.13 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "margin_effect_at_current_revenue: 52,631,213.87 USD",
+            "source": "reports/variance_evidence.json#margin_effect_at_current_revenue"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 868000000.0,
+          "revenue_effect_at_prior_margin": 815368786.1271676,
+          "margin_effect_at_current_revenue": 52631213.872832514,
+          "reconciliation_difference": -9.685754776000977e-08
+        }
+      },
+      "elapsed_seconds": 0.92
+    },
+    {
+      "company": "NOW",
+      "period_end": "2025-12-31",
+      "evidence": {
+        "gross_profit_change": 1598000000.0,
+        "revenue_effect_at_prior_margin": 1816361798.980335,
+        "margin_effect_at_current_revenue": -218361798.9803343,
+        "reconciliation_difference": -6.854534149169922e-07
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:49.316343+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 1598000000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 1816361798.980335
+          },
+          {
+            "metric": "margin_effect_at_current_revenue",
+            "value": -218361798.9803343
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 1,598,000,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 1,816,361,798.98 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "margin_effect_at_current_revenue: -218,361,798.98 USD",
+            "source": "reports/variance_evidence.json#margin_effect_at_current_revenue"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 1598000000.0,
+          "revenue_effect_at_prior_margin": 1816361798.980335,
+          "margin_effect_at_current_revenue": -218361798.9803343,
+          "reconciliation_difference": -6.854534149169922e-07
+        }
+      },
+      "elapsed_seconds": 0.89
+    },
+    {
+      "company": "SNOW",
+      "period_end": "2025-01-31",
+      "evidence": {
+        "gross_profit_change": 503792000.0,
+        "revenue_effect_at_prior_margin": 557396085.4352182,
+        "margin_effect_at_current_revenue": -53604085.43521824,
+        "reconciliation_difference": 2.2351741790771484e-08
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:50.203068+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 503792000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 557396085.4352182
+          },
+          {
+            "metric": "margin_effect_at_current_revenue",
+            "value": -53604085.43521824
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 503,792,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 557,396,085.44 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "margin_effect_at_current_revenue: -53,604,085.44 USD",
+            "source": "reports/variance_evidence.json#margin_effect_at_current_revenue"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 503792000.0,
+          "revenue_effect_at_prior_margin": 557396085.4352182,
+          "margin_effect_at_current_revenue": -53604085.43521824,
+          "reconciliation_difference": 2.2351741790771484e-08
+        }
+      },
+      "elapsed_seconds": 0.88
+    },
+    {
+      "company": "TEAM",
+      "period_end": "2026-06-30",
+      "evidence": {
+        "gross_profit_change": 1255025000.0,
+        "revenue_effect_at_prior_margin": 1124166875.5669851,
+        "margin_effect_at_current_revenue": 130858124.43301442,
+        "reconciliation_difference": 4.470348358154297e-07
+      },
+      "passed": true,
+      "output": {
+        "status": "completed",
+        "model": "qwen2.5:3b",
+        "backend": "ollama",
+        "run_at": "2026-11-26T23:00:51.152319+00:00",
+        "temperature": 0,
+        "raw_claims": [
+          {
+            "metric": "gross_profit_change",
+            "value": 1255025000.0
+          },
+          {
+            "metric": "revenue_effect_at_prior_margin",
+            "value": 1124166875.5669851
+          },
+          {
+            "metric": "margin_effect_at_current_revenue",
+            "value": 130858124.43301442
+          }
+        ],
+        "verified_statements": [
+          {
+            "text": "gross_profit_change: 1,255,025,000.00 USD",
+            "source": "reports/variance_evidence.json#gross_profit_change"
+          },
+          {
+            "text": "revenue_effect_at_prior_margin: 1,124,166,875.57 USD",
+            "source": "reports/variance_evidence.json#revenue_effect_at_prior_margin"
+          },
+          {
+            "text": "margin_effect_at_current_revenue: 130,858,124.43 USD",
+            "source": "reports/variance_evidence.json#margin_effect_at_current_revenue"
+          }
+        ],
+        "evidence": {
+          "gross_profit_change": 1255025000.0,
+          "revenue_effect_at_prior_margin": 1124166875.5669851,
+          "margin_effect_at_current_revenue": 130858124.43301442,
+          "reconciliation_difference": 4.470348358154297e-07
+        }
+      },
+      "elapsed_seconds": 0.95
+    }
+  ],
+  "pass_rate": 1.0,
+  "failures": []
+}

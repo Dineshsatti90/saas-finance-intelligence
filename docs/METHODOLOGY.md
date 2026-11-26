@@ -39,4 +39,12 @@ All prices, adoption and usage are user-entered assumptions, not disclosed Sales
 
 ## AI reporting boundary
 
-The optional model selects calculated observations from a financial bridge. A verifier checks metric keys, finite numeric values and numerical agreement before a deterministic renderer attaches citations. Free-form causes are rejected. This validates factual observations under a narrow contract, not a complete board narrative; model relevance remains a human review task. Live model evaluation has not been run in the reference release.
+The optional model selects calculated observations from a financial bridge. A verifier checks metric keys, finite numeric values and numerical agreement before a deterministic renderer attaches citations. Free-form causes are rejected. The recorded local Qwen run passed this contract on ten disclosed historical cases. This is not an assessment of a complete board narrative; relevance and completeness remain human review tasks. See `AI_EVALUATION.md` and the saved raw claims.
+
+## Additional driver-based benchmark
+
+`forecast_study.py` compares all three models on the same 40 targets. Features are the last two annual growth rates, operating margin, OCF/revenue and log revenue. StandardScaler and Ridge(alpha=10) fit only earlier cases whose first-published target revenue was public at the prediction origin. At least 12 training cases are required. The penalty is fixed before this comparison, not selected on its test errors. Target scoring uses cutoff-restated actuals. Point-in-time source vintage and training-label availability are tested explicitly.
+
+## Populated operating case
+
+The workbook includes fictional IllustrativeCo inputs in `inputs/illustrative_case.json`, separate from the real Salesforce build. It assumes 10,000 accounts, $100 core MRR, explicit ARR components/staffing and AI prices/usage/costs. Core gross margin is calibrated to a reported ratio; customer economics remain assumptions. `build_workbook.py --blank` generates a separate blank operating-input template without duplicating scenario builds in the main workbook.

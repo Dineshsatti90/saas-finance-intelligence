@@ -6,4 +6,4 @@ The SEC explains that its datasets are extracted from issuer filings and may con
 
 Raw archives and complete company-facts downloads remain local. Published financial extracts are selected/normalized outputs; no claim of ownership over issuer disclosures is made. Observe SEC fair-access requirements when refreshing and review applicable source terms before downstream redistribution or commercial use.
 
-No separate open-source license is applied to original application code in this release. Public GitHub visibility should not be interpreted as an unrestricted code-reuse license.
+Original application code and original documentation are MIT-licensed under `LICENSE`. This does not override source-data or issuer rights, or attribution/noncommercial/share-alike conditions applicable to Olist-derived material.
