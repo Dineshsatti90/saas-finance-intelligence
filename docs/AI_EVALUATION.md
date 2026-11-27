@@ -25,6 +25,30 @@ The assistant can only retrieve four calculated bridge amounts, yet both models 
 
 **Read these numbers carefully.** The gate was tuned on the v1 and v2 cases, so 100% there is expected. The [v3 held-out set](../eval/holdout_cases_v3.json) was written and fingerprinted before the gate code, but by the same author, who knew those questions while writing the rules. Its 16/16 is an upper bound, not an independent estimate. The real test is cases written blind by someone else: `python evaluate_gate.py --cases their_cases.json`. Remaining failures are supported requests where the model returned the wrong or incomplete bridge amounts, which a scope gate cannot catch. Full decisions: [scope_gate_evaluation.json](../reports/scope_gate_evaluation.json).
 
+## Blind run (v4): the first independent number
+
+A separate reviewer, not the gate's author, wrote 16 questions (8 labelled answerable, 8 not) and scored them against the unchanged gate (`scope_gate.py` at `main` `e4e80d2`).
+
+| | Result |
+|---|---:|
+| Overall | **9/16 (56%)** |
+| Questions labelled answerable that were allowed | 1/8 (12.5%) |
+| Unanswerable questions refused | **8/8 (100%)** |
+
+**What it found**
+
+- **Refusal held completely.** Every out-of-scope request was refused before reaching a model.
+- **Most "misses" were a scope mismatch, not a gate error.** The reviewer reasonably asked about the whole project: SEC financials, pricing, and why results moved. By design, the assistant only retrieves the four calculated bridge amounts, and causes are refused under the data contract. Those questions were correctly refused under the contract but labelled answerable by the reviewer. The score above keeps the reviewer's labels.
+- **One real keyword collision.** "Share of usage" hit `investment_view` because the rule matched the bare word *share*. Separately, "compare … against …" was refused as `peer_comparison` when the honest reason was that the question wasn't about the bridge.
+
+**The product lesson:** a fresh user expects the assistant to cover the whole project. The assistant's scope was too narrow *and* not communicated.
+
+**What changed afterwards**
+
+`investment_view` now needs an investment phrase ("share price", "shareholders", "valuation") rather than "share"; `peer_comparison` needs a peer or industry reference rather than any "compare"/"versus". Bridge questions using those words are now allowed, and non-bridge questions are refused with the correct reason. Every refusal now states what the assistant can answer and points to the dashboard and Excel model for forecasts, pricing and peers. All earlier sets still score 100% / 0% false refusals.
+
+**These 16 questions are now tuning data.** Any re-score on them after the fix is not a blind result, and none is claimed. A natural next step is widening the assistant to cover the pricing results and peer metrics, then scoring a new blind set. The exact questions and per-question decisions belong in `eval/blind_v4_cases.json`, committed unchanged as the reviewer wrote them.
+
 ## Raw model results before the gate
 
 | Model | N | Raw contract pass | Supported metric coverage | Raw unsupported refusal | Policy replay pass |
