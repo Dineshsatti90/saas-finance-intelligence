@@ -47,7 +47,7 @@ A separate reviewer, not the gate's author, wrote 16 questions (8 labelled answe
 
 `investment_view` now needs an investment phrase ("share price", "shareholders", "valuation") rather than "share"; `peer_comparison` needs a peer or industry reference rather than any "compare"/"versus". Bridge questions using those words are now allowed, and non-bridge questions are refused with the correct reason. Every refusal now states what the assistant can answer and points to the dashboard and Excel model for forecasts, pricing and peers. All earlier sets still score 100% / 0% false refusals.
 
-**These 16 questions are now tuning data.** Any re-score on them after the fix is not a blind result, and none is claimed. A natural next step is widening the assistant to cover the pricing results and peer metrics, then scoring a new blind set. The exact questions and per-question decisions belong in `eval/blind_v4_cases.json`, committed unchanged as the reviewer wrote them.
+**These 16 questions are now tuning data.** Any re-score on them after the fix is not a blind result, and none is claimed. A natural next step is widening the assistant to cover the pricing results and peer metrics, then scoring a new blind set. The exact questions and per-question decisions are committed unchanged in [eval/blind_v4_cases.json](../eval/blind_v4_cases.json) as the reviewer wrote them.
 
 ## Raw model results before the gate
 
