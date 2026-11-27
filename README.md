@@ -12,14 +12,7 @@
 
 <img src="docs/screenshots/walkthrough.gif" width="720" alt="Silent preview of the financial planning dashboard">
 
-### AI: source selection with measured limits
-
-| Model | Raw reference/coverage pass | Unsupported refusal |
-| --- | ---: | ---: |
-| qwen2.5:3b | 44.4% | 0.0% |
-| llama3:8b | 52.8% | 11.1% |
-
-36 cases: 20 reused and 16 first-pass v2. The demo shows saved verified output; experimental free-form routing has refusal failures. [Both models, policy replay and failure cases](docs/AI_EVALUATION.md).
+**AI layer:** a commentary assistant that only cites calculated bridge amounts, with a scope gate that refuses causes, forecasts and anything else the filings can't support. [Evaluation, model comparison and failure analysis →](docs/AI_EVALUATION.md)
 
 **Excel · SQL · Python · DuckDB · Streamlit**
 
