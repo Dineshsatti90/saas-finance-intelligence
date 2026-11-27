@@ -9,7 +9,7 @@
     "input_rate": 2.0,
     "output_rate": 8.0,
     "subscription": 25.0,
-    "usage_price": 0.015,
+    "usage_price": 0.0125,
     "fixed_cost": 10000,
     "core_mrr_per_account": 100
   },
@@ -32,11 +32,11 @@
     },
     {
       "strategy": "Usage-based",
-      "monthly_revenue": 60000.0,
+      "monthly_revenue": 50000.0,
       "inference_cost": 32000.0,
       "fixed_cost": 10000,
-      "contribution": 18000.0,
-      "gross_margin": 0.4666666666666667
+      "contribution": 8000.0,
+      "gross_margin": 0.36
     }
   ],
   "addon_monthly_break_even": 21.0,
@@ -45,6 +45,826 @@
   "bundling_required_retained_accounts_per_year": 540.7068671523795,
   "bundling_required_annual_churn_improvement_pp": 5.407068671523795,
   "calibration_gross_margin": 0.7767609873570138,
-  "retention_model": "One full year of core gross profit per retained account; ignores timing, discounting and retention uncertainty.",
-  "recommendation": "In this illustrative case, prefer metered pricing at $0.015/request: it contributes $18,000/month versus $8,000 for the $25 add-on. If choosing the add-on, cap included requests at 2,500 per adopting account to avoid negative contribution under unchanged costs."
+  "usage_risk": {
+    "distribution": "assumed lognormal; exact conditional quantile-bin means",
+    "log_sigma": 1.2,
+    "bins": 100,
+    "mean_requests": 2000,
+    "equal_price_per_request": 0.0125,
+    "inference_cost_per_request": 0.008,
+    "fixed_cost_per_adopter": 5.0,
+    "flat_allocated_contribution_break_even_requests": 2500.0,
+    "flat_variable_break_even_requests": 3125.0,
+    "share_above_flat_allocated_break_even": 0.2159475232126345,
+    "top_decile_usage_share": 0.4675016590149962,
+    "top_decile_mean_requests": 9350.033180299923,
+    "top_decile_flat_mean_contribution": -54.80026544239938,
+    "top_decile_metered_mean_contribution": 37.075149311349655,
+    "baseline_flat_contribution": 8000.000000000002,
+    "baseline_metered_contribution": 8000.000000000002,
+    "metered_adoption_break_even": 0.11111111111111109,
+    "cohorts": [
+      {
+        "usage_percentile_bin": 1,
+        "account_share": 0.01,
+        "requests_per_account": 42.13331415222268,
+        "flat_contribution_per_account": 19.66293348678222,
+        "metered_contribution_per_account": -4.810400086314998
+      },
+      {
+        "usage_percentile_bin": 2,
+        "account_share": 0.01,
+        "requests_per_account": 71.75958436095193,
+        "flat_contribution_per_account": 19.425923325112386,
+        "metered_contribution_per_account": -4.677081870375717
+      },
+      {
+        "usage_percentile_bin": 3,
+        "account_share": 0.01,
+        "requests_per_account": 92.55680011444576,
+        "flat_contribution_per_account": 19.259545599084433,
+        "metered_contribution_per_account": -4.583494399484994
+      },
+      {
+        "usage_percentile_bin": 4,
+        "account_share": 0.01,
+        "requests_per_account": 110.61930087927536,
+        "flat_contribution_per_account": 19.115045592965796,
+        "metered_contribution_per_account": -4.50221314604326
+      },
+      {
+        "usage_percentile_bin": 5,
+        "account_share": 0.01,
+        "requests_per_account": 127.24935621628076,
+        "flat_contribution_per_account": 18.982005150269753,
+        "metered_contribution_per_account": -4.427377897026736
+      },
+      {
+        "usage_percentile_bin": 6,
+        "account_share": 0.01,
+        "requests_per_account": 143.00926387632558,
+        "flat_contribution_per_account": 18.855925888989397,
+        "metered_contribution_per_account": -4.356458312556535
+      },
+      {
+        "usage_percentile_bin": 7,
+        "account_share": 0.01,
+        "requests_per_account": 158.20352140019418,
+        "flat_contribution_per_account": 18.734371828798448,
+        "metered_contribution_per_account": -4.288084153699126
+      },
+      {
+        "usage_percentile_bin": 8,
+        "account_share": 0.01,
+        "requests_per_account": 173.01958934424385,
+        "flat_contribution_per_account": 18.61584328524605,
+        "metered_contribution_per_account": -4.221411847950902
+      },
+      {
+        "usage_percentile_bin": 9,
+        "account_share": 0.01,
+        "requests_per_account": 187.5831605368035,
+        "flat_contribution_per_account": 18.499334715705572,
+        "metered_contribution_per_account": -4.155875777584384
+      },
+      {
+        "usage_percentile_bin": 10,
+        "account_share": 0.01,
+        "requests_per_account": 201.983928780383,
+        "flat_contribution_per_account": 18.384128569756935,
+        "metered_contribution_per_account": -4.091072320488276
+      },
+      {
+        "usage_percentile_bin": 11,
+        "account_share": 0.01,
+        "requests_per_account": 216.28907202213816,
+        "flat_contribution_per_account": 18.269687423822894,
+        "metered_contribution_per_account": -4.0266991759003785
+      },
+      {
+        "usage_percentile_bin": 12,
+        "account_share": 0.01,
+        "requests_per_account": 230.5509239883416,
+        "flat_contribution_per_account": 18.15559260809327,
+        "metered_contribution_per_account": -3.962520842052463
+      },
+      {
+        "usage_percentile_bin": 13,
+        "account_share": 0.01,
+        "requests_per_account": 244.81162825732255,
+        "flat_contribution_per_account": 18.04150697394142,
+        "metered_contribution_per_account": -3.898347672842048
+      },
+      {
+        "usage_percentile_bin": 14,
+        "account_share": 0.01,
+        "requests_per_account": 259.1061092900651,
+        "flat_contribution_per_account": 17.92715112567948,
+        "metered_contribution_per_account": -3.834022508194707
+      },
+      {
+        "usage_percentile_bin": 15,
+        "account_share": 0.01,
+        "requests_per_account": 273.4640498419295,
+        "flat_contribution_per_account": 17.812287601264565,
+        "metered_contribution_per_account": -3.7694117757113172
+      },
+      {
+        "usage_percentile_bin": 16,
+        "account_share": 0.01,
+        "requests_per_account": 287.9112539732817,
+        "flat_contribution_per_account": 17.696709968213746,
+        "metered_contribution_per_account": -3.7043993571202325
+      },
+      {
+        "usage_percentile_bin": 17,
+        "account_share": 0.01,
+        "requests_per_account": 302.47061526472754,
+        "flat_contribution_per_account": 17.58023507788218,
+        "metered_contribution_per_account": -3.6388822313087257
+      },
+      {
+        "usage_percentile_bin": 18,
+        "account_share": 0.01,
+        "requests_per_account": 317.1628230118937,
+        "flat_contribution_per_account": 17.46269741590485,
+        "metered_contribution_per_account": -3.5727672964464783
+      },
+      {
+        "usage_percentile_bin": 19,
+        "account_share": 0.01,
+        "requests_per_account": 332.00688967634505,
+        "flat_contribution_per_account": 17.34394488258924,
+        "metered_contribution_per_account": -3.5059689964564473
+      },
+      {
+        "usage_percentile_bin": 20,
+        "account_share": 0.01,
+        "requests_per_account": 347.02055350647674,
+        "flat_contribution_per_account": 17.223835571948186,
+        "metered_contribution_per_account": -3.4384075092208546
+      },
+      {
+        "usage_percentile_bin": 21,
+        "account_share": 0.01,
+        "requests_per_account": 362.22059221501723,
+        "flat_contribution_per_account": 17.102235262279862,
+        "metered_contribution_per_account": -3.3700073350324224
+      },
+      {
+        "usage_percentile_bin": 22,
+        "account_share": 0.01,
+        "requests_per_account": 377.62307219526974,
+        "flat_contribution_per_account": 16.979015422437843,
+        "metered_contribution_per_account": -3.3006961751212858
+      },
+      {
+        "usage_percentile_bin": 23,
+        "account_share": 0.01,
+        "requests_per_account": 393.2435503515595,
+        "flat_contribution_per_account": 16.854051597187524,
+        "metered_contribution_per_account": -3.2304040234179823
+      },
+      {
+        "usage_percentile_bin": 24,
+        "account_share": 0.01,
+        "requests_per_account": 409.097240696258,
+        "flat_contribution_per_account": 16.727222074429935,
+        "metered_contribution_per_account": -3.159062416866839
+      },
+      {
+        "usage_percentile_bin": 25,
+        "account_share": 0.01,
+        "requests_per_account": 425.1991545251389,
+        "flat_contribution_per_account": 16.598406763798888,
+        "metered_contribution_per_account": -3.0866038046368747
+      },
+      {
+        "usage_percentile_bin": 26,
+        "account_share": 0.01,
+        "requests_per_account": 441.5642206744452,
+        "flat_contribution_per_account": 16.467486234604436,
+        "metered_contribution_per_account": -3.0129610069649964
+      },
+      {
+        "usage_percentile_bin": 27,
+        "account_share": 0.01,
+        "requests_per_account": 458.2073907424794,
+        "flat_contribution_per_account": 16.334340874060164,
+        "metered_contribution_per_account": -2.9380667416588424
+      },
+      {
+        "usage_percentile_bin": 28,
+        "account_share": 0.01,
+        "requests_per_account": 475.1437330047389,
+        "flat_contribution_per_account": 16.19885013596209,
+        "metered_contribution_per_account": -2.8618532014786746
+      },
+      {
+        "usage_percentile_bin": 29,
+        "account_share": 0.01,
+        "requests_per_account": 492.38851791987696,
+        "flat_contribution_per_account": 16.060891856640986,
+        "metered_contribution_per_account": -2.7842516693605535
+      },
+      {
+        "usage_percentile_bin": 30,
+        "account_share": 0.01,
+        "requests_per_account": 509.957297519896,
+        "flat_contribution_per_account": 15.920341619840833,
+        "metered_contribution_per_account": -2.705192161160468
+      },
+      {
+        "usage_percentile_bin": 31,
+        "account_share": 0.01,
+        "requests_per_account": 527.8659805347307,
+        "flat_contribution_per_account": 15.777072155722152,
+        "metered_contribution_per_account": -2.6246030875937114
+      },
+      {
+        "usage_percentile_bin": 32,
+        "account_share": 0.01,
+        "requests_per_account": 546.130904777313,
+        "flat_contribution_per_account": 15.630952761781494,
+        "metered_contribution_per_account": -2.542410928502091
+      },
+      {
+        "usage_percentile_bin": 33,
+        "account_share": 0.01,
+        "requests_per_account": 564.7689080763032,
+        "flat_contribution_per_account": 15.481848735389576,
+        "metered_contribution_per_account": -2.4585399136566353
+      },
+      {
+        "usage_percentile_bin": 34,
+        "account_share": 0.01,
+        "requests_per_account": 583.7973988713121,
+        "flat_contribution_per_account": 15.329620809029503,
+        "metered_contribution_per_account": -2.3729117050790953
+      },
+      {
+        "usage_percentile_bin": 35,
+        "account_share": 0.01,
+        "requests_per_account": 603.2344274623097,
+        "flat_contribution_per_account": 15.174124580301523,
+        "metered_contribution_per_account": -2.2854450764196064
+      },
+      {
+        "usage_percentile_bin": 36,
+        "account_share": 0.01,
+        "requests_per_account": 623.0987588209863,
+        "flat_contribution_per_account": 15.01520992943211,
+        "metered_contribution_per_account": -2.196055585305561
+      },
+      {
+        "usage_percentile_bin": 37,
+        "account_share": 0.01,
+        "requests_per_account": 643.4099478195316,
+        "flat_contribution_per_account": 14.852720417443749,
+        "metered_contribution_per_account": -2.1046552348121077
+      },
+      {
+        "usage_percentile_bin": 38,
+        "account_share": 0.01,
+        "requests_per_account": 664.1884177059299,
+        "flat_contribution_per_account": 14.686492658352563,
+        "metered_contribution_per_account": -2.0111521203233154
+      },
+      {
+        "usage_percentile_bin": 39,
+        "account_share": 0.01,
+        "requests_per_account": 685.4555426508674,
+        "flat_contribution_per_account": 14.51635565879306,
+        "metered_contribution_per_account": -1.9154500580710963
+      },
+      {
+        "usage_percentile_bin": 40,
+        "account_share": 0.01,
+        "requests_per_account": 707.2337352073744,
+        "flat_contribution_per_account": 14.342130118341004,
+        "metered_contribution_per_account": -1.817448191566815
+      },
+      {
+        "usage_percentile_bin": 41,
+        "account_share": 0.01,
+        "requests_per_account": 729.5465395590755,
+        "flat_contribution_per_account": 14.163627683527395,
+        "metered_contribution_per_account": -1.7170405719841595
+      },
+      {
+        "usage_percentile_bin": 42,
+        "account_share": 0.01,
+        "requests_per_account": 752.4187314853881,
+        "flat_contribution_per_account": 13.980650148116894,
+        "metered_contribution_per_account": -1.6141157083157531
+      },
+      {
+        "usage_percentile_bin": 43,
+        "account_share": 0.01,
+        "requests_per_account": 775.8764260435646,
+        "flat_contribution_per_account": 13.792988591651483,
+        "metered_contribution_per_account": -1.5085560828039588
+      },
+      {
+        "usage_percentile_bin": 44,
+        "account_share": 0.01,
+        "requests_per_account": 799.9471940567382,
+        "flat_contribution_per_account": 13.600422447546094,
+        "metered_contribution_per_account": -1.4002376267446777
+      },
+      {
+        "usage_percentile_bin": 45,
+        "account_share": 0.01,
+        "requests_per_account": 824.6601886087612,
+        "flat_contribution_per_account": 13.40271849112991,
+        "metered_contribution_per_account": -1.289029151260574
+      },
+      {
+        "usage_percentile_bin": 46,
+        "account_share": 0.01,
+        "requests_per_account": 850.0462828798461,
+        "flat_contribution_per_account": 13.199629736961231,
+        "metered_contribution_per_account": -1.174791727040692
+      },
+      {
+        "usage_percentile_bin": 47,
+        "account_share": 0.01,
+        "requests_per_account": 876.1382208153701,
+        "flat_contribution_per_account": 12.99089423347704,
+        "metered_contribution_per_account": -1.057378006330834
+      },
+      {
+        "usage_percentile_bin": 48,
+        "account_share": 0.01,
+        "requests_per_account": 902.9707823101196,
+        "flat_contribution_per_account": 12.776233741519043,
+        "metered_contribution_per_account": -0.9366314796044612
+      },
+      {
+        "usage_percentile_bin": 49,
+        "account_share": 0.01,
+        "requests_per_account": 930.5809648115004,
+        "flat_contribution_per_account": 12.555352281507997,
+        "metered_contribution_per_account": -0.8123856583482478
+      },
+      {
+        "usage_percentile_bin": 50,
+        "account_share": 0.01,
+        "requests_per_account": 959.0081835062936,
+        "flat_contribution_per_account": 12.327934531949651,
+        "metered_contribution_per_account": -0.6844631742216789
+      },
+      {
+        "usage_percentile_bin": 51,
+        "account_share": 0.01,
+        "requests_per_account": 988.2944925661885,
+        "flat_contribution_per_account": 12.093644059470492,
+        "metered_contribution_per_account": -0.5526747834521508
+      },
+      {
+        "usage_percentile_bin": 52,
+        "account_share": 0.01,
+        "requests_per_account": 1018.4848302871252,
+        "flat_contribution_per_account": 11.852121357702998,
+        "metered_contribution_per_account": -0.4168182637079365
+      },
+      {
+        "usage_percentile_bin": 53,
+        "account_share": 0.01,
+        "requests_per_account": 1049.6272913892658,
+        "flat_contribution_per_account": 11.602981668885874,
+        "metered_contribution_per_account": -0.2766771887483035
+      },
+      {
+        "usage_percentile_bin": 54,
+        "account_share": 0.01,
+        "requests_per_account": 1081.773430248556,
+        "flat_contribution_per_account": 11.345812558011552,
+        "metered_contribution_per_account": -0.1320195638814976
+      },
+      {
+        "usage_percentile_bin": 55,
+        "account_share": 0.01,
+        "requests_per_account": 1114.9785994331917,
+        "flat_contribution_per_account": 11.080171204534466,
+        "metered_contribution_per_account": 0.017403697449362987
+      },
+      {
+        "usage_percentile_bin": 56,
+        "account_share": 0.01,
+        "requests_per_account": 1149.3023286317405,
+        "flat_contribution_per_account": 10.805581370946076,
+        "metered_contribution_per_account": 0.17186047884283262
+      },
+      {
+        "usage_percentile_bin": 57,
+        "account_share": 0.01,
+        "requests_per_account": 1184.808749911992,
+        "flat_contribution_per_account": 10.521530000704065,
+        "metered_contribution_per_account": 0.33163937460396475
+      },
+      {
+        "usage_percentile_bin": 58,
+        "account_share": 0.01,
+        "requests_per_account": 1221.5670762678267,
+        "flat_contribution_per_account": 10.227463389857386,
+        "metered_contribution_per_account": 0.4970518432052211
+      },
+      {
+        "usage_percentile_bin": 59,
+        "account_share": 0.01,
+        "requests_per_account": 1259.6521416372132,
+        "flat_contribution_per_account": 9.922782866902294,
+        "metered_contribution_per_account": 0.6684346373674597
+      },
+      {
+        "usage_percentile_bin": 60,
+        "account_share": 0.01,
+        "requests_per_account": 1299.1450120494076,
+        "flat_contribution_per_account": 9.606839903604738,
+        "metered_contribution_per_account": 0.8461525542223347
+      },
+      {
+        "usage_percentile_bin": 61,
+        "account_share": 0.01,
+        "requests_per_account": 1340.1336793477658,
+        "flat_contribution_per_account": 9.278930565217873,
+        "metered_contribution_per_account": 1.030601557064947
+      },
+      {
+        "usage_percentile_bin": 62,
+        "account_share": 0.01,
+        "requests_per_account": 1382.7138511079195,
+        "flat_contribution_per_account": 8.938289191136644,
+        "metered_contribution_per_account": 1.2222123299856387
+      },
+      {
+        "usage_percentile_bin": 63,
+        "account_share": 0.01,
+        "requests_per_account": 1426.9898530273938,
+        "flat_contribution_per_account": 8.584081175780849,
+        "metered_contribution_per_account": 1.4214543386232732
+      },
+      {
+        "usage_percentile_bin": 64,
+        "account_share": 0.01,
+        "requests_per_account": 1473.0756633228204,
+        "flat_contribution_per_account": 8.215394693417435,
+        "metered_contribution_per_account": 1.6288404849526925
+      },
+      {
+        "usage_percentile_bin": 65,
+        "account_share": 0.01,
+        "requests_per_account": 1521.0961026946413,
+        "flat_contribution_per_account": 7.831231178442868,
+        "metered_contribution_per_account": 1.844932462125887
+      },
+      {
+        "usage_percentile_bin": 66,
+        "account_share": 0.01,
+        "requests_per_account": 1571.1882084107676,
+        "flat_contribution_per_account": 7.4304943327138595,
+        "metered_contribution_per_account": 2.0703469378484556
+      },
+      {
+        "usage_percentile_bin": 67,
+        "account_share": 0.01,
+        "requests_per_account": 1623.502827288681,
+        "flat_contribution_per_account": 7.011977381690553,
+        "metered_contribution_per_account": 2.3057627227990647
+      },
+      {
+        "usage_percentile_bin": 68,
+        "account_share": 0.01,
+        "requests_per_account": 1678.2064701727718,
+        "flat_contribution_per_account": 6.574348238617825,
+        "metered_contribution_per_account": 2.551929115777474
+      },
+      {
+        "usage_percentile_bin": 69,
+        "account_share": 0.01,
+        "requests_per_account": 1735.4834803799736,
+        "flat_contribution_per_account": 6.1161321569602105,
+        "metered_contribution_per_account": 2.809675661709882
+      },
+      {
+        "usage_percentile_bin": 70,
+        "account_share": 0.01,
+        "requests_per_account": 1795.5385811437186,
+        "flat_contribution_per_account": 5.6356913508502515,
+        "metered_contribution_per_account": 3.0799236151467344
+      },
+      {
+        "usage_percentile_bin": 71,
+        "account_share": 0.01,
+        "requests_per_account": 1858.5998831725403,
+        "flat_contribution_per_account": 5.131200934619677,
+        "metered_contribution_per_account": 3.363699474276432
+      },
+      {
+        "usage_percentile_bin": 72,
+        "account_share": 0.01,
+        "requests_per_account": 1924.9224541968424,
+        "flat_contribution_per_account": 4.600620366425261,
+        "metered_contribution_per_account": 3.6621510438857925
+      },
+      {
+        "usage_percentile_bin": 73,
+        "account_share": 0.01,
+        "requests_per_account": 1994.792579381588,
+        "flat_contribution_per_account": 4.0416593649472965,
+        "metered_contribution_per_account": 3.9765666072171477
+      },
+      {
+        "usage_percentile_bin": 74,
+        "account_share": 0.01,
+        "requests_per_account": 2068.5328769174394,
+        "flat_contribution_per_account": 3.451736984660485,
+        "metered_contribution_per_account": 4.308397946128478
+      },
+      {
+        "usage_percentile_bin": 75,
+        "account_share": 0.01,
+        "requests_per_account": 2146.5084800218583,
+        "flat_contribution_per_account": 2.8279321598251315,
+        "metered_contribution_per_account": 4.659288160098363
+      },
+      {
+        "usage_percentile_bin": 76,
+        "account_share": 0.01,
+        "requests_per_account": 2229.1345593285605,
+        "flat_contribution_per_account": 2.166923525371516,
+        "metered_contribution_per_account": 5.031105516978524
+      },
+      {
+        "usage_percentile_bin": 77,
+        "account_share": 0.01,
+        "requests_per_account": 2316.8855444340998,
+        "flat_contribution_per_account": 1.4649156445272027,
+        "metered_contribution_per_account": 5.425984949953451
+      },
+      {
+        "usage_percentile_bin": 78,
+        "account_share": 0.01,
+        "requests_per_account": 2410.306519262417,
+        "flat_contribution_per_account": 0.7175478459006612,
+        "metered_contribution_per_account": 5.846379336680879
+      },
+      {
+        "usage_percentile_bin": 79,
+        "account_share": 0.01,
+        "requests_per_account": 2510.0274262508715,
+        "flat_contribution_per_account": -0.08021941000697197,
+        "metered_contribution_per_account": 6.295123418128924
+      },
+      {
+        "usage_percentile_bin": 80,
+        "account_share": 0.01,
+        "requests_per_account": 2616.78093916089,
+        "flat_contribution_per_account": -0.9342475132871186,
+        "metered_contribution_per_account": 6.775514226224006
+      },
+      {
+        "usage_percentile_bin": 81,
+        "account_share": 0.01,
+        "requests_per_account": 2731.4251840431457,
+        "flat_contribution_per_account": -1.8514014723451666,
+        "metered_contribution_per_account": 7.291413328194157
+      },
+      {
+        "usage_percentile_bin": 82,
+        "account_share": 0.01,
+        "requests_per_account": 2854.9729498065444,
+        "flat_contribution_per_account": -2.8397835984523567,
+        "metered_contribution_per_account": 7.847378274129451
+      },
+      {
+        "usage_percentile_bin": 83,
+        "account_share": 0.01,
+        "requests_per_account": 2988.6297087347025,
+        "flat_contribution_per_account": -3.9090376698776197,
+        "metered_contribution_per_account": 8.448833689306163
+      },
+      {
+        "usage_percentile_bin": 84,
+        "account_share": 0.01,
+        "requests_per_account": 3133.843784071311,
+        "flat_contribution_per_account": -5.070750272570489,
+        "metered_contribution_per_account": 9.102297028320901
+      },
+      {
+        "usage_percentile_bin": 85,
+        "account_share": 0.01,
+        "requests_per_account": 3292.373556704853,
+        "flat_contribution_per_account": -6.338988453638823,
+        "metered_contribution_per_account": 9.81568100517184
+      },
+      {
+        "usage_percentile_bin": 86,
+        "account_share": 0.01,
+        "requests_per_account": 3466.3790365358605,
+        "flat_contribution_per_account": -7.7310322922868835,
+        "metered_contribution_per_account": 10.598705664411375
+      },
+      {
+        "usage_percentile_bin": 87,
+        "account_share": 0.01,
+        "requests_per_account": 3658.5490327838756,
+        "flat_contribution_per_account": -9.268392262271007,
+        "metered_contribution_per_account": 11.46347064752744
+      },
+      {
+        "usage_percentile_bin": 88,
+        "account_share": 0.01,
+        "requests_per_account": 3872.2816212774514,
+        "flat_contribution_per_account": -10.97825297021961,
+        "metered_contribution_per_account": 12.425267295748533
+      },
+      {
+        "usage_percentile_bin": 89,
+        "account_share": 0.01,
+        "requests_per_account": 4111.946656045507,
+        "flat_contribution_per_account": -12.895573248364052,
+        "metered_contribution_per_account": 13.503759952204781
+      },
+      {
+        "usage_percentile_bin": 90,
+        "account_share": 0.01,
+        "requests_per_account": 4383.278691209802,
+        "flat_contribution_per_account": -15.066229529678417,
+        "metered_contribution_per_account": 14.72475411044411
+      },
+      {
+        "usage_percentile_bin": 91,
+        "account_share": 0.01,
+        "requests_per_account": 4693.985080433283,
+        "flat_contribution_per_account": -17.551880643466262,
+        "metered_contribution_per_account": 16.122932861949774
+      },
+      {
+        "usage_percentile_bin": 92,
+        "account_share": 0.01,
+        "requests_per_account": 5054.7251425764325,
+        "flat_contribution_per_account": -20.437801140611462,
+        "metered_contribution_per_account": 17.74626314159395
+      },
+      {
+        "usage_percentile_bin": 93,
+        "account_share": 0.01,
+        "requests_per_account": 5480.764074703037,
+        "flat_contribution_per_account": -23.8461125976243,
+        "metered_contribution_per_account": 19.663438336163672
+      },
+      {
+        "usage_percentile_bin": 94,
+        "account_share": 0.01,
+        "requests_per_account": 5994.936332891099,
+        "flat_contribution_per_account": -27.95949066312879,
+        "metered_contribution_per_account": 21.977213498009945
+      },
+      {
+        "usage_percentile_bin": 95,
+        "account_share": 0.01,
+        "requests_per_account": 6633.367487637986,
+        "flat_contribution_per_account": -33.06693990110389,
+        "metered_contribution_per_account": 24.850153694370942
+      },
+      {
+        "usage_percentile_bin": 96,
+        "account_share": 0.01,
+        "requests_per_account": 7457.664230337246,
+        "flat_contribution_per_account": -39.66131384269797,
+        "metered_contribution_per_account": 28.55948903651761
+      },
+      {
+        "usage_percentile_bin": 97,
+        "account_share": 0.01,
+        "requests_per_account": 8584.679944475982,
+        "flat_contribution_per_account": -48.67743955580785,
+        "metered_contribution_per_account": 33.63105975014192
+      },
+      {
+        "usage_percentile_bin": 98,
+        "account_share": 0.01,
+        "requests_per_account": 10275.796764046308,
+        "flat_contribution_per_account": -62.20637411237047,
+        "metered_contribution_per_account": 41.241085438208394
+      },
+      {
+        "usage_percentile_bin": 99,
+        "account_share": 0.01,
+        "requests_per_account": 13322.58262466186,
+        "flat_contribution_per_account": -86.58066099729488,
+        "metered_contribution_per_account": 54.951621810978374
+      },
+      {
+        "usage_percentile_bin": 100,
+        "account_share": 0.01,
+        "requests_per_account": 26001.830121236002,
+        "flat_contribution_per_account": -188.014640969888,
+        "metered_contribution_per_account": 112.00823554556202
+      }
+    ],
+    "stress_scenarios": [
+      {
+        "mean_usage_multiplier": 0.75,
+        "metered_adoption_penalty": 0.0,
+        "flat_contribution": 16000.0,
+        "metered_contribution": 3500.000000000002
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "metered_adoption_penalty": 0.1,
+        "flat_contribution": 16000.0,
+        "metered_contribution": 2150.000000000002
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "metered_adoption_penalty": 0.2,
+        "flat_contribution": 16000.0,
+        "metered_contribution": 800.0000000000018
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "metered_adoption_penalty": 0.3,
+        "flat_contribution": 16000.0,
+        "metered_contribution": -549.9999999999982
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "metered_adoption_penalty": 0.0,
+        "flat_contribution": 8000.0,
+        "metered_contribution": 8000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "metered_adoption_penalty": 0.1,
+        "flat_contribution": 8000.0,
+        "metered_contribution": 6200.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "metered_adoption_penalty": 0.2,
+        "flat_contribution": 8000.0,
+        "metered_contribution": 4400.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "metered_adoption_penalty": 0.3,
+        "flat_contribution": 8000.0,
+        "metered_contribution": 2600.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "metered_adoption_penalty": 0.0,
+        "flat_contribution": 0.0,
+        "metered_contribution": 12500.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "metered_adoption_penalty": 0.1,
+        "flat_contribution": 0.0,
+        "metered_contribution": 10250.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "metered_adoption_penalty": 0.2,
+        "flat_contribution": 0.0,
+        "metered_contribution": 8000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "metered_adoption_penalty": 0.3,
+        "flat_contribution": 0.0,
+        "metered_contribution": 5750.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "metered_adoption_penalty": 0.0,
+        "flat_contribution": -8000.0,
+        "metered_contribution": 17000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "metered_adoption_penalty": 0.1,
+        "flat_contribution": -8000.0,
+        "metered_contribution": 14300.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "metered_adoption_penalty": 0.2,
+        "flat_contribution": -8000.0,
+        "metered_contribution": 11600.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "metered_adoption_penalty": 0.3,
+        "flat_contribution": -8000.0,
+        "metered_contribution": 8900.000000000004
+      }
+    ],
+    "limits": "Usage distribution, equal adoption and demand response are assumptions. Allocated fixed cost is not marginal cost. Metering protects variable unit margin only when price exceeds unit cost; it does not guarantee total profitability."
+  },
+  "retention_model": "One full year of core gross profit per retained account; timing, discounting and retention effects are unobserved.",
+  "recommendation": "Test a capped add-on against metered pricing at an equal baseline price of $0.0125/request. Both contribute $8,000/month at 2,000 requests and equal adoption. Choose based on heavy-usage risk and measured demand response, not the previous unequal-price comparison."
 }

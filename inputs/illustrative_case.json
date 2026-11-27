@@ -10,9 +10,16 @@
     "input_rate": 2.0,
     "output_rate": 8.0,
     "subscription": 25.0,
-    "usage_price": 0.015,
+    "usage_price": 0.0125,
     "fixed_cost": 10000,
     "core_mrr_per_account": 100
+  },
+  "usage_risk": {
+    "distribution": "lognormal assumption, not observed customer usage",
+    "log_sigma": 1.2,
+    "quantile_bins": 100,
+    "adoption_penalties": [0.0, 0.1, 0.2, 0.3],
+    "mean_usage_multipliers": [0.75, 1.0, 1.25, 1.5]
   },
   "arr": {
     "opening": 12000000,

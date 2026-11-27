@@ -32,7 +32,7 @@ def features(ticker: str, cutoff: str, end: str) -> tuple[list[float], float] | 
     last = history[-3:]
     if any(
         not 300 <= (date.fromisoformat(b["period_end"]) - date.fromisoformat(a["period_end"])).days <= 380
-        for a, b in zip(last, last[1:])
+        for a, b in zip(last, last[1:], strict=False)
     ):
         return None
     current = last[-1]["value"]
@@ -62,7 +62,7 @@ def run() -> None:
         data = json.loads((ROOT / "data/raw" / f"{ticker}.json").read_text())["facts"]["us-gaap"]
         from model import TAGS
 
-        for prior, target in zip(final, final[1:]):
+        for prior, target in zip(final, final[1:], strict=False):
             if (
                 not 300
                 <= (date.fromisoformat(target["period_end"]) - date.fromisoformat(prior["period_end"])).days

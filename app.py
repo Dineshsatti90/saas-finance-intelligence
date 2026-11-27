@@ -7,6 +7,7 @@ import pandas as pd
 import streamlit as st
 
 from planning import pricing, scenario
+from pricing_case import risk_analysis
 
 ROOT = Path(__file__).resolve().parent
 
@@ -127,12 +128,53 @@ def main() -> None:
             st.metric("Add-on monthly contribution break-even", f"${break_even:.2f}")
         else:
             st.info("No adopting accounts: break-even price per adopter is unavailable; fixed costs remain.")
+        st.subheader("Equal-price comparison and uneven usage")
+        st.caption(
+            "The comparison below resets metered price to add-on price / mean requests. Usage dispersion and demand response are assumptions, not customer observations."
+        )
+        sigma = st.slider("Assumed log-usage dispersion", 0.0, 2.0, 1.2, step=0.1)
+        if active:
+            risk = (
+                risk_analysis(
+                    dict(
+                        customers=customers,
+                        adoption=adoption,
+                        requests=requests,
+                        input_tokens=tokens_in,
+                        output_tokens=tokens_out,
+                        input_rate=rate_in,
+                        output_rate=rate_out,
+                        subscription=subscription,
+                        usage_price=usage_price,
+                        fixed_cost=fixed,
+                    ),
+                    sigma,
+                )
+                if tokens_in * rate_in + tokens_out * rate_out > 0
+                else None
+            )
+            if risk:
+                st.metric("Equal baseline metered price / request", f"${risk['equal_price_per_request']:.4f}")
+                st.info(
+                    f"Same baseline contribution: flat ${risk['baseline_flat_contribution']:,.0f}; metered ${risk['baseline_metered_contribution']:,.0f}. Top 10% of accounts use {risk['top_decile_usage_share']:.1%} of requests under the assumed distribution."
+                )
+                st.write(
+                    f"Flat pricing loses allocated contribution above {risk['flat_allocated_contribution_break_even_requests']:,.0f} requests/account. This includes allocated fixed cost, not just marginal inference cost."
+                )
+                cohorts = pd.DataFrame(risk["cohorts"])
+                st.line_chart(
+                    cohorts.set_index("usage_percentile_bin")[
+                        ["flat_contribution_per_account", "metered_contribution_per_account"]
+                    ]
+                )
+                st.dataframe(risk["stress_scenarios"], hide_index=True, width="stretch")
+                st.caption(risk["limits"])
     with tabs[3]:
         st.markdown((ROOT / "reports/pricing_decision.md").read_text(encoding="utf-8"))
         with st.expander("Recorded, verified local-model output"):
             st.json(read_json("ai_commentary.json"))
         with st.expander("AI contract evaluation, including failures"):
-            report = read_json("ai_evaluation.json")
+            report = read_json("ai_adversarial_evaluation.json")
             st.json({k: v for k, v in report.items() if k != "results"})
         st.caption("These are saved model runs. The public dashboard does not expose a paid model endpoint.")
 

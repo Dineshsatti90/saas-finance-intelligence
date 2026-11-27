@@ -20,7 +20,7 @@ def build(output: Path | None = None, *, blank: bool = False) -> Path:
     pricing = json.loads((ROOT / "reports/pricing_case.json").read_text())
     output = output or ROOT / "outputs/saas-finance/saas_financial_planning.xlsx"
     output.parent.mkdir(parents=True, exist_ok=True)
-    book = xlsxwriter.Workbook(output)
+    book = xlsxwriter.Workbook(output, {"use_future_functions": True})
     book.set_properties(
         {
             "title": "SaaS financial planning",
@@ -63,7 +63,16 @@ def build(output: Path | None = None, *, blank: bool = False) -> Path:
         "note": book.add_format({**base, "font_color": "#526479", "italic": True, "text_wrap": True}),
         "case": book.add_format({**base, "font_color": "#167347", "bold": True}),
     }
-    names = ["Summary", "Assumptions", "Forecast", "AI Pricing", "ARR and Staffing", "Actuals", "Checks"]
+    names = [
+        "Summary",
+        "Assumptions",
+        "Forecast",
+        "AI Pricing",
+        "ARR and Staffing",
+        "Actuals",
+        "Checks",
+        "Usage Risk",
+    ]
     sheets = {name: book.add_worksheet(name) for name in names}
     cached: dict[tuple[str, str], Any] = {}
 
@@ -482,9 +491,145 @@ def build(output: Path | None = None, *, blank: bool = False) -> Path:
     )
     sheets["AI Pricing"].merge_range(
         "C31:G33",
-        "Illustrative recommendation: metered $0.015/request contributes $18k/month at the entered assumptions. Pricing changes can affect adoption and demand; those effects are not estimated.",
+        "Equal baseline price: $0.0125/request = $25 at 2,000 requests. Both policies contribute $8k/month. See Usage Risk for tail exposure and adoption stresses; demand response is unobserved.",
         styles["note"],
     )
+
+    # Equal-price risk: all formulas reference the editable AI Pricing inputs.
+    risk = pricing["usage_risk"]
+    value("Usage Risk", "C5", "FICTIONAL lognormal usage; not customer observations", "warning")
+    risk_rows = [
+        (7, "Assumed log-usage sigma", None, risk["log_sigma"], "input"),
+        (8, "Mean requests / adopter", "='AI Pricing'!D9", risk["mean_requests"], "whole"),
+        (9, "Adopting accounts", "='AI Pricing'!D18", active, "whole"),
+        (10, "Variable cost / request, USD", "='AI Pricing'!D20", unit, "rate"),
+        (11, "Flat add-on price, USD", "='AI Pricing'!D14", case["pricing"]["subscription"], "decimal"),
+        (
+            12,
+            "Equal baseline metered price",
+            '=IFERROR(D11/D8,"n.a.")',
+            risk["equal_price_per_request"],
+            "rate",
+        ),
+        (
+            13,
+            "Allocated fixed cost / adopter",
+            "=IFERROR('AI Pricing'!D16/D9,\"n.a.\")",
+            risk["fixed_cost_per_adopter"],
+            "decimal",
+        ),
+        (
+            15,
+            "Top decile share of requests",
+            '=IF(ISNUMBER(D7),NORM.S.DIST(D7-NORM.S.INV(0.9),TRUE),"n.a.")',
+            risk["top_decile_usage_share"],
+            "pct",
+        ),
+        (
+            16,
+            "Top decile mean requests",
+            '=IFERROR(D8*D15/0.1,"n.a.")',
+            risk["top_decile_mean_requests"],
+            "whole",
+        ),
+        (
+            17,
+            "Flat allocated break-even requests",
+            '=IFERROR((D11-D13)/D10,"n.a.")',
+            risk["flat_allocated_contribution_break_even_requests"],
+            "whole",
+        ),
+        (
+            18,
+            "Share above flat break-even",
+            '=IFERROR(IF(D17<=0,1,IF(D7=0,IF(D8>D17,1,0),1-NORM.S.DIST((LN(D17/D8)+D7^2/2)/D7,TRUE))),"n.a.")',
+            risk["share_above_flat_allocated_break_even"],
+            "pct",
+        ),
+        (
+            20,
+            "Baseline flat contribution USD",
+            '=IFERROR(D9*(D11-D8*D10)-$D$9*$D$13,"n.a.")',
+            risk["baseline_flat_contribution"],
+            "whole",
+        ),
+        (
+            21,
+            "Baseline equal-price metered USD",
+            '=IFERROR(D9*D8*(D12-D10)-$D$9*$D$13,"n.a.")',
+            risk["baseline_metered_contribution"],
+            "whole",
+        ),
+        (
+            23,
+            "Top decile flat contribution / acct",
+            '=IFERROR(D11-D16*D10-D13,"n.a.")',
+            risk["top_decile_flat_mean_contribution"],
+            "decimal",
+        ),
+        (
+            24,
+            "Top decile metered contrib / acct",
+            '=IFERROR(D16*(D12-D10)-D13,"n.a.")',
+            risk["top_decile_metered_mean_contribution"],
+            "decimal",
+        ),
+    ]
+    for r, label, expression, result, style in risk_rows:
+        row("Usage Risk", r, label)
+        if expression:
+            formula("Usage Risk", f"D{r}", expression, "n.a." if blank else result, style)
+        else:
+            value("Usage Risk", f"D{r}", None if blank else result, style)
+    sheets["Usage Risk"].data_validation(
+        "D7", {"validate": "decimal", "criteria": "between", "minimum": 0, "maximum": 3}
+    )
+    sheets["Usage Risk"].merge_range(
+        "C26:G28",
+        "Baseline aggregate profit is equal. Heavy users lose money under flat pricing above the threshold; metering preserves variable margin only when price exceeds unit cost. Demand and usage responses are assumed, not measured.",
+        styles["note"],
+    )
+    band(
+        "Usage Risk",
+        30,
+        [
+            "Mean usage multiplier",
+            "Metered adoption penalty",
+            "Flat contribution USD",
+            "Metered contribution USD",
+            "Metered less flat USD",
+        ],
+    )
+    for r, item in enumerate(risk["stress_scenarios"], 31):
+        value("Usage Risk", f"C{r}", item["mean_usage_multiplier"], "input")
+        value("Usage Risk", f"D{r}", item["metered_adoption_penalty"], "input_pct")
+        formula(
+            "Usage Risk",
+            f"E{r}",
+            f'=IFERROR($D$9*($D$11-$D$8*C{r}*$D$10)-$D$9*$D$13,"n.a.")',
+            "n.a." if blank else item["flat_contribution"],
+            "whole",
+        )
+        formula(
+            "Usage Risk",
+            f"F{r}",
+            f'=IFERROR($D$9*(1-D{r})*$D$8*C{r}*($D$12-$D$10)-$D$9*$D$13,"n.a.")',
+            "n.a." if blank else item["metered_contribution"],
+            "whole",
+        )
+        formula(
+            "Usage Risk",
+            f"G{r}",
+            f'=IFERROR(F{r}-E{r},"n.a.")',
+            "n.a." if blank else item["metered_contribution"] - item["flat_contribution"],
+            "whole",
+        )
+    sheets["Usage Risk"].merge_range(
+        "C48:G50",
+        "All stresses are scenarios. Increased usage makes metering bill more; stress cases are not equal realized revenue. Fixed costs do not fall with adoption. Source: inputs/illustrative_case.json and reports/pricing_case.json.",
+        styles["note"],
+    )
+    sheets["Usage Risk"].print_area("C2:G50")
 
     # Primary review: real financials above, separate illustrative pricing result below.
     value("Summary", "C5", "Salesforce actuals and planning assumptions", "note")
@@ -510,7 +655,7 @@ def build(output: Path | None = None, *, blank: bool = False) -> Path:
     band(
         "Summary", 24, ["Pricing policy", "Revenue USD", "Inference USD", "Contribution USD", "Gross margin"]
     )
-    for r, source in zip((25, 26, 27), (25, 26, 27)):
+    for r, source in zip((25, 26, 27), (25, 26, 27), strict=True):
         row("Summary", r, pricing["results"][r - 25]["strategy"])
         for column in "DEFG":
             formula(
@@ -522,7 +667,7 @@ def build(output: Path | None = None, *, blank: bool = False) -> Path:
             )
     sheets["Summary"].merge_range(
         "C30:G32",
-        "Operating recommendation: test metered pricing at the illustrative rates. No company customer count, ARR flow or inference bill is inferred from SEC financials.",
+        "Test a capped add-on against equal-baseline-price metering. Tail risk and measured demand response decide; neither policy is proven superior. Operating inputs are fictional.",
         styles["note"],
     )
     sheets["Summary"].set_column("I:L", 18)

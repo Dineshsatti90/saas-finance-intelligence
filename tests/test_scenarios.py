@@ -27,7 +27,7 @@ def test_driver_training_labels_are_available_before_origin():
     assert (rows.latest_training_label <= rows.origin).all()
     assert (rows.training_cases >= 12).all()
     targets = rows.groupby("method")[["ticker", "target_period_end"]].apply(
-        lambda x: set(zip(x.ticker, x.target_period_end))
+        lambda x: set(zip(x.ticker, x.target_period_end, strict=False))
     )
     assert len(targets) == 3 and targets.iloc[0] == targets.iloc[1] == targets.iloc[2]
 

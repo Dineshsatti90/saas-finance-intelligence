@@ -13,10 +13,12 @@ Real SEC financials, expanding-window forecast evaluation and a populated Excel 
 ## Three findings
 
 1. **A modest driver model improves this paired benchmark:** WAPE is 3.99%, versus 4.44% for trailing growth and 14.23% for flat revenue on the same 40 annual targets. Training uses only labels public at each origin.
-2. **Metered pricing is the better test hypothesis in the illustrative case:** $0.015/request contributes $18,000/month versus $8,000 for a $25 add-on. The add-on breaks even at $21/account/month under the specified usage and cost assumptions.
+2. **Equal pricing removes the apparent metering advantage:** $0.0125/request equals $25 at 2,000 requests; both contribute $8,000/month at equal adoption. Under an explicitly assumed lognormal distribution, the heaviest 10% use 46.8% of requests. Flat pricing loses allocated contribution above 2,500 requests/account; metering shifts heavy-usage risk but can reduce adoption.
 3. **Bundling needs evidence:** covering its $42,000 monthly cost requires about 541 extra accounts retained for a full year—5.41 percentage points of annual churn improvement across the assumed 10,000-account base—in the simplified retention model.
 
 ![Project preview](docs/screenshots/overview.jpg)
+
+**[Two-minute decision walkthrough](docs/WALKTHROUGH.md)** · [Method choices for interviews](docs/METHOD_CHOICES.md)
 
 **Stack:** Python · SQL · DuckDB · scikit-learn · XlsxWriter · Excel · Streamlit · optional local/API LLM.
 
@@ -24,7 +26,9 @@ Real SEC financials, expanding-window forecast evaluation and a populated Excel 
 
 The warehouse ingests **3,832,977 SEC numeric records** from the full 2025 Q4 release and **171,654 company-fact observations across eight peers**. Salesforce FY26 revenue is $41.525bn; its gross-profit increase is $3.003bn. Period ends, tags, accessions and filed dates remain in the normalized outputs.
 
-The workbook uses real Salesforce annual actuals and editable forward rates. Separate **IllustrativeCo** ARR, staffing and AI schedules are populated fictional operating assumptions, with core gross margin calibrated to a reported value. A prominent cash warning distinguishes pre-financing accumulation from a cash balance forecast.
+The workbook uses real Salesforce annual actuals and editable forward rates. Separate **IllustrativeCo** ARR, staffing and AI schedules are populated fictional operating assumptions, with core gross margin calibrated to a reported value. The eighth **Usage Risk** sheet compares equal-price baseline economics and a 16-case usage/adoption stress grid with live formulas. A prominent cash warning distinguishes pre-financing accumulation from a cash balance forecast.
+
+Free Community Cloud demos may sleep after inactivity; screenshots and the walkthrough remain available while they wake.
 
 ## Run or rebuild
 
@@ -49,9 +53,9 @@ For a full refresh, set `SEC_USER_AGENT` to a project name and real contact, the
 
 ## Excel and AI validation
 
-The workbook was recalculated in **Microsoft Excel 16.0**. Verification exercised Base/Downside switching, a later-year assumption and a zero-adopter boundary, then restored and saved the original inputs. [Native verification](outputs/saas-finance/native_excel_verification.json). CI rebuilds the workbook using XlsxWriter and tests source ties, formula caches and blank-input behavior. Committed AppTests exercise company selection and pricing changes.
+The workbook was recalculated in **Microsoft Excel 16.0**. Verification exercised Base/Downside switching, a later-year assumption, equal-price parity, log-usage dispersion and a zero-adopter boundary, then restored and saved the original inputs. [Native verification](outputs/saas-finance/native_excel_verification.json). CI rebuilds the workbook using XlsxWriter and tests source ties, formula caches and blank-input behavior. Committed AppTests exercise company selection and pricing changes.
 
-Local Qwen 2.5 3B passed **100% of 10 disclosed historical bridge cases** under a narrow numeric/source-key contract. [Raw and verified outputs](reports/ai_evaluation.json) · [Salesforce example](reports/ai_commentary.json) · [Evaluation protocol](docs/AI_EVALUATION.md).
+Local Qwen 2.5 3B passed **70% of a harder 20-case evaluation**: ten historical bridges plus ten unsupported/injection requests. Supported metric coverage passed 100%; explicit unsupported refusal was only 40%. One unsupported request produced displayable source numbers, so numeric validation is not a relevance guarantee. The dashboard exposes saved bridge outputs, not a free-text finance-advice endpoint. [Full harder run](reports/ai_adversarial_evaluation.json) · [Original narrow 10-case run](reports/ai_evaluation.json) · [Protocol and failures](docs/AI_EVALUATION.md).
 
 ## Architecture and documentation
 
@@ -68,7 +72,7 @@ flowchart LR
 
 - [Data dictionary](docs/DATA_DICTIONARY.md), [methodology](docs/METHODOLOGY.md), [operations](docs/OPERATIONS.md)
 - [Driver model comparison](reports/driver_backtest_summary.json) and [each forecast](reports/driver_backtest.csv)
-- [Illustrative inputs](inputs/illustrative_case.json), [pricing calculations](reports/pricing_case.json) and [decision](reports/pricing_decision.md)
+- [Illustrative inputs](inputs/illustrative_case.json), [pricing calculations](reports/pricing_case.json), [usage cohorts](reports/usage_risk_cohorts.csv), [adoption/usage stresses](reports/pricing_stress.csv) and [decision](reports/pricing_decision.md)
 - [Power BI measures](bi/measures.dax), [MIT code license](LICENSE) and [source terms](DATA_LICENSE.md)
 
 ## Limitations

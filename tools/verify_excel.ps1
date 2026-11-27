@@ -26,6 +26,13 @@ try {
     if ([Math]::Abs($taskLaterPeriodRevenue - [double]$taskForecast.Range('F8').Value2 * 1.2) -gt 0.01) { throw 'Later-period driver did not recalculate' }
     $taskAssumptions.Range('G9').Value2 = 0.1
     $taskPricing = $taskBook.Worksheets.Item('AI Pricing')
+    if ([Math]::Abs([double]$taskPricing.Range('F27').Value2 - 8000) -gt 0.01) { throw 'Equal-price baseline mismatch' }
+    $taskRisk = $taskBook.Worksheets.Item('Usage Risk')
+    if ([Math]::Abs([double]$taskRisk.Range('D20').Value2 - [double]$taskRisk.Range('D21').Value2) -gt 0.01) { throw 'Risk sheet baseline profits differ' }
+    $taskRisk.Range('D7').Value2 = 0
+    $taskExcel.CalculateFullRebuild()
+    if ([Math]::Abs([double]$taskRisk.Range('D15').Value2 - 0.1) -gt 0.00001) { throw 'Zero dispersion tail share mismatch' }
+    $taskRisk.Range('D7').Value2 = 1.2
     $taskOriginalAccounts = [double]$taskPricing.Range('D7').Value2
     $taskPricing.Range('D7').Value2 = 0
     $taskExcel.CalculateFullRebuild()
@@ -33,7 +40,7 @@ try {
     $taskPricing.Range('D7').Value2 = $taskOriginalAccounts
     $taskExcel.CalculateFullRebuild()
     $taskBook.Save()
-    $taskResult = @{status='passed'; engine='Microsoft Excel COM'; version=$taskExcel.Version; checked_at=[DateTime]::UtcNow.ToString('o'); base_revenue=$taskBaseRevenue; downside_revenue=$taskDownsideRevenue; later_period_revenue=$taskLaterPeriodRevenue; checks=@('full_recalculation','case_selector','later_period_driver','zero_adopter_boundary','inputs_restored_and_saved')}
+    $taskResult = @{status='passed'; engine='Microsoft Excel COM'; version=$taskExcel.Version; checked_at=[DateTime]::UtcNow.ToString('o'); base_revenue=$taskBaseRevenue; downside_revenue=$taskDownsideRevenue; later_period_revenue=$taskLaterPeriodRevenue; checks=@('full_recalculation','case_selector','later_period_driver','equal_price_parity','risk_dispersion_recalculation','zero_adopter_boundary','inputs_restored_and_saved')}
     $taskResult | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $taskVerificationPath -Encoding utf8
     $taskResult | ConvertTo-Json -Depth 5
 } catch {

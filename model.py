@@ -160,7 +160,7 @@ def backtest(asof: str) -> None:
         final = [r for r in annual_facts(ticker, asof) if r["metric"] == "revenue"]
         final.sort(key=lambda x: x["period_end"])
         # At each origin, use only filings that were public on that date.
-        for prior, target in zip(final, final[1:]):
+        for prior, target in zip(final, final[1:], strict=False):
             # Original publication date for the prior year, not a future restatement.
             all_data = json.loads((ROOT / "data/raw" / (ticker + ".json")).read_text())["facts"]["us-gaap"]
             filings = [
@@ -190,7 +190,7 @@ def backtest(asof: str) -> None:
                 not 300
                 <= (date.fromisoformat(b["period_end"]) - date.fromisoformat(a["period_end"])).days
                 <= 380
-                for a, b in zip(recent, recent[1:])
+                for a, b in zip(recent, recent[1:], strict=False)
             ):
                 continue
             # No future values in growth rate: prior two reported annual changes, median via average of two.

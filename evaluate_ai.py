@@ -18,7 +18,7 @@ def run() -> None:
     cases = []
     for ticker, group in frame.groupby("ticker"):
         records = group.to_dict("records")
-        for prior, current in zip(records, records[1:]):
+        for prior, current in zip(records, records[1:], strict=False):
             if pd.isna(prior["gross_profit"]):
                 prior["gross_profit"] = prior["revenue"] - prior["cost_of_revenue"]
             if pd.isna(current["gross_profit"]):

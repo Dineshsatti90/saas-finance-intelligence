@@ -48,3 +48,7 @@ The optional model selects calculated observations from a financial bridge. A ve
 ## Populated operating case
 
 The workbook includes fictional IllustrativeCo inputs in `inputs/illustrative_case.json`, separate from the real Salesforce build. It assumes 10,000 accounts, $100 core MRR, explicit ARR components/staffing and AI prices/usage/costs. Core gross margin is calibrated to a reported ratio; customer economics remain assumptions. `build_workbook.py --blank` generates a separate blank operating-input template without duplicating scenario builds in the main workbook.
+
+
+## Equal-price and usage-risk revision
+Default metered pricing is $0.0125/request, equal to $25 at the assumed 2,000 requests. Baseline aggregate contribution is $8k under both policies; the prior $18k-versus-$8k comparison charged more and did not establish structural superiority. An assumed lognormal usage distribution and adoption/usage stress grid now quantify risk allocation. Exact conditional bin means preserve total mean usage. These are distribution scenarios, not fabricated historical customer records. See [pricing decision](../reports/pricing_decision.md).
