@@ -62,3 +62,32 @@ def test_committed_gate_report_matches_current_gate_source():
     report = json.loads((ROOT / "reports/scope_gate_evaluation.json").read_text(encoding="utf-8"))
     assert report["gate_source_sha256"] == hashlib.sha256((ROOT / "scope_gate.py").read_bytes()).hexdigest()
     assert report["gate_only"]["holdout_v3"]["supported_false_refusal_rate"] == 0
+
+
+# Paraphrases of the blind v4 keyword collisions (exact blind wording is in the blind question file).
+@pytest.mark.parametrize(
+    "question",
+    [
+        "What share of the gross profit change came from the margin effect?",
+        "Compare the revenue effect versus the margin effect in the bridge.",
+    ],
+)
+def test_blind_v4_keyword_collisions_no_longer_block_bridge_questions(question):
+    allowed, reason = scope_decision(question)
+    assert allowed, reason
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        "What share of usage comes from the top decile of accounts?",
+        "Compare seat-based pricing against usage-based pricing.",
+    ],
+)
+def test_non_bridge_questions_are_refused_as_out_of_scope_not_mislabelled(question):
+    assert scope_decision(question) == (False, "no_bridge_metric")
+
+
+def test_scope_refusal_tells_the_user_what_can_be_answered():
+    response = commentary({"gross_profit_change": 1.0}, "What will gross profit be next year?")
+    assert "revenue effect at prior margin" in response["message"]

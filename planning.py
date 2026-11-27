@@ -9,7 +9,7 @@ import os
 import urllib.request
 import duckdb
 from request_policy import preflight_reason
-from scope_gate import scope_decision
+from scope_gate import SCOPE_HELP, scope_decision
 
 ROOT = Path(__file__).resolve().parent
 
@@ -187,6 +187,7 @@ def commentary(
                 "status": "unsupported",
                 "refusal_origin": "scope_gate",
                 "rule": scope_reason,
+                "message": SCOPE_HELP,
                 "verified_statements": [],
             }
     model = os.environ.get("LLM_MODEL")

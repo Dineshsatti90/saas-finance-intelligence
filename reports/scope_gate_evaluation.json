@@ -1,5 +1,5 @@
 {
-  "gate_source_sha256": "cec36db29d85cfc1ad7c51bf9819395d6e8a904b8c078a3c4a33ba5b4ccd3c08",
+  "gate_source_sha256": "2b99e89f5a4bb00e2c5c13e595c9c5c09f0955433fa90c39c3605a52d5c9ad06",
   "holdout_sha256": "b673d12234f4441758ed518c0087ac7907b6775189fec875ffac7c18dfef8835",
   "method": "Deterministic bridge-metric allowlist + documented-limitation refusals; no model or network.",
   "caveat": "The gate was tuned on the v1 and v2 cases. The v3 set was written and fingerprinted before the gate code, but by the same author, who knew those questions while writing rules. Treat v3 as an upper bound, not an independent generalization estimate. Score blind cases written by someone else with --cases.",
