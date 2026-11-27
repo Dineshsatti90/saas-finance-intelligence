@@ -1,21 +1,32 @@
 {
   "status": "completed",
-  "model": "qwen2.5:3b",
+  "model": "llama3:8b",
   "backend": "ollama",
-  "run_at": "2026-11-26T23:00:52.056049+00:00",
+  "run_at": "2026-11-27T01:21:41.443029+00:00",
   "temperature": 0,
+  "raw_response": {
+    "status": "answered",
+    "claims": [
+      {
+        "metric": "gross_profit_change"
+      },
+      {
+        "metric": "revenue_effect_at_prior_margin"
+      },
+      {
+        "metric": "margin_effect_at_current_revenue"
+      }
+    ]
+  },
   "raw_claims": [
     {
-      "metric": "gross_profit_change",
-      "value": 3003000000
+      "metric": "gross_profit_change"
     },
     {
-      "metric": "revenue_effect_at_prior_margin",
-      "value": 2802078374.455733
+      "metric": "revenue_effect_at_prior_margin"
     },
     {
-      "metric": "margin_effect_at_current_revenue",
-      "value": 200921625.5442655
+      "metric": "margin_effect_at_current_revenue"
     }
   ],
   "verified_statements": [
@@ -37,5 +48,8 @@
     "revenue_effect_at_prior_margin": 2802078374.455733,
     "margin_effect_at_current_revenue": 200921625.5442655,
     "reconciliation_difference": 1.6689300537109375e-06
-  }
+  },
+  "example_selection": "Supported bridge example, case 104 of the published 36-case 8B run; not a separate benchmark",
+  "question": "List the three bridge components as source references.",
+  "evaluation_file": "eval/runs/llama8b_references_v2.json"
 }

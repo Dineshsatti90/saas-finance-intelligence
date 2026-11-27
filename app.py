@@ -17,8 +17,10 @@ def read_json(name: str) -> dict:
 
 
 def main() -> None:
-    st.set_page_config(page_title="SaaS Finance Intelligence", layout="wide")
-    st.title("SaaS financial planning & AI product economics")
+    st.set_page_config(
+        page_title="SaaS Finance Intelligence", layout="wide", initial_sidebar_state="collapsed"
+    )
+    st.title("SaaS finance & AI pricing")
     st.caption(
         "Reported SEC financials | point-in-time annual forecasts | separate illustrative operating assumptions"
     )
@@ -167,7 +169,36 @@ def main() -> None:
                         ["flat_contribution_per_account", "metered_contribution_per_account"]
                     ]
                 )
-                st.dataframe(risk["stress_scenarios"], hide_index=True, width="stretch")
+                st.subheader("Adoption losses under both policies")
+                st.caption(
+                    "Relative losses from baseline adoption; uniform loss holds the retained usage mix fixed."
+                )
+                usage_multiplier = st.selectbox(
+                    "Stress mean usage multiplier", [0.75, 1.0, 1.25, 1.5], index=1
+                )
+                first, second = st.columns(2)
+                flat_loss = first.selectbox(
+                    "Flat add-on adoption loss", [0.0, 0.1, 0.2, 0.3], format_func=lambda x: f"{x:.0%}"
+                )
+                metered_loss = second.selectbox(
+                    "Metered adoption loss", [0.0, 0.1, 0.2, 0.3], format_func=lambda x: f"{x:.0%}"
+                )
+                stress = next(
+                    x
+                    for x in risk["stress_scenarios"]
+                    if x["mean_usage_multiplier"] == usage_multiplier
+                    and x["flat_adoption_penalty"] == flat_loss
+                    and x["metered_adoption_penalty"] == metered_loss
+                )
+                first.metric("Stressed flat contribution", f"${stress['flat_contribution']:,.0f}")
+                second.metric("Stressed metered contribution", f"${stress['metered_contribution']:,.0f}")
+                st.dataframe(
+                    [r for r in risk["stress_scenarios"] if r["mean_usage_multiplier"] == usage_multiplier],
+                    hide_index=True,
+                    width="stretch",
+                )
+                with st.expander("Light-user exit changes the retained usage mix"):
+                    st.json(risk["selection_stress"])
                 st.caption(risk["limits"])
     with tabs[3]:
         st.markdown((ROOT / "reports/pricing_decision.md").read_text(encoding="utf-8"))

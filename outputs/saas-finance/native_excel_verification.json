@@ -1,18 +1,19 @@
 {
-  "status": "passed",
   "downside_revenue": 43186000000.0,
-  "version": "16.0",
-  "engine": "Microsoft Excel COM",
-  "later_period_revenue": 60294300000.00001,
   "checks": [
     "full_recalculation",
     "case_selector",
     "later_period_driver",
+    "symmetric_adoption_stress",
     "equal_price_parity",
     "risk_dispersion_recalculation",
     "zero_adopter_boundary",
     "inputs_restored_and_saved"
   ],
-  "checked_at": "2026-11-27T00:45:24.3279213Z",
-  "base_revenue": 45677500000.0
+  "later_period_revenue": 60294300000.00001,
+  "base_revenue": 45677500000.0,
+  "status": "passed",
+  "checked_at": "2026-11-27T01:19:14.8220215Z",
+  "version": "16.0",
+  "engine": "Microsoft Excel COM"
 }

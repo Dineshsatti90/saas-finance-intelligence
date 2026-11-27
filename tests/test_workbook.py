@@ -15,7 +15,7 @@ def test_public_workbook_rebuild_and_cached_calculations(tmp_path):
     output = build(tmp_path / "model.xlsx")
     formulas = openpyxl.load_workbook(output, data_only=False)
     values = openpyxl.load_workbook(output, data_only=True)
-    assert len(formulas.sheetnames) == 8
+    assert len(formulas.sheetnames) == 9
     assert formulas["Forecast"]["E8"].value.startswith("=IF(")
     assert values["Forecast"]["E8"].value == pytest.approx(45_677_500_000)
     assert values["AI Pricing"]["F26"].value == 8000

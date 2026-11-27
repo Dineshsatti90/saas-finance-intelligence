@@ -1,0 +1,56 @@
+{
+  "version": "references_v2",
+  "results": [
+    {
+      "model": "qwen2.5:3b",
+      "cases": 36,
+      "pass_rate": 0.4444444444444444,
+      "supported_pass_rate": 0.8888888888888888,
+      "unsupported_refusal_rate": 0.0,
+      "guarded_replay_pass_rate": 0.6111111111111112,
+      "guarded_replay_refusal_rate": 0.3333333333333333,
+      "policy_false_refusals": 0,
+      "preflight_blocked": 6,
+      "unsupported_displayable_answers": 2,
+      "run_file": "eval/runs/qwen3b_references_v2.json",
+      "splits": {
+        "v1_regression": {
+          "cases": 20,
+          "raw_pass_rate": 0.5,
+          "policy_replay_pass_rate": 0.8
+        },
+        "first_pass_v2": {
+          "cases": 16,
+          "raw_pass_rate": 0.375,
+          "policy_replay_pass_rate": 0.375
+        }
+      }
+    },
+    {
+      "model": "llama3:8b",
+      "cases": 36,
+      "pass_rate": 0.5277777777777778,
+      "supported_pass_rate": 0.9444444444444444,
+      "unsupported_refusal_rate": 0.1111111111111111,
+      "guarded_replay_pass_rate": 0.6388888888888888,
+      "guarded_replay_refusal_rate": 0.3333333333333333,
+      "policy_false_refusals": 0,
+      "preflight_blocked": 6,
+      "unsupported_displayable_answers": 16,
+      "run_file": "eval/runs/llama8b_references_v2.json",
+      "splits": {
+        "v1_regression": {
+          "cases": 20,
+          "raw_pass_rate": 0.6,
+          "policy_replay_pass_rate": 0.8
+        },
+        "first_pass_v2": {
+          "cases": 16,
+          "raw_pass_rate": 0.4375,
+          "policy_replay_pass_rate": 0.4375
+        }
+      }
+    }
+  ],
+  "decision": "Only saved, verified bridge outputs are exposed in the public app. Free-form finance routing is a research prototype. Both models have refusal failures; rule replay is not a general safety benchmark."
+}

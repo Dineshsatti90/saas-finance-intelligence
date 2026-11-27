@@ -52,3 +52,7 @@ The workbook includes fictional IllustrativeCo inputs in `inputs/illustrative_ca
 
 ## Equal-price and usage-risk revision
 Default metered pricing is $0.0125/request, equal to $25 at the assumed 2,000 requests. Baseline aggregate contribution is $8k under both policies; the prior $18k-versus-$8k comparison charged more and did not establish structural superiority. An assumed lognormal usage distribution and adoption/usage stress grid now quantify risk allocation. Exact conditional bin means preserve total mean usage. These are distribution scenarios, not fabricated historical customer records. See [pricing decision](../reports/pricing_decision.md).
+
+
+## Symmetric adoption and reference-only revision
+The pricing grid now has 64 cases across independent flat and metered adoption penalties. Uniform losses hold retained usage mix fixed; a separate scenario removes the lightest quarter from flat pricing, raising retained mean usage. Nine Excel sheets include Adoption Stress. AI outputs contain only source metric references; Python resolves amounts. Raw 3B and 8B results on 36 cases and deterministic policy replay are reported separately. Earlier 20-case results remain archived and are not directly comparable to the changed contract.

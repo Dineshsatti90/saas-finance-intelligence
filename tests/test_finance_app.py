@@ -25,3 +25,13 @@ def test_pricing_changes_and_zero_adoption():
     assert (
         next(x for x in app.metric if x.label == "Add-on monthly contribution break-even").value == "$37.00"
     )
+
+
+def test_independent_adoption_controls_change_the_right_policy():
+    app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
+    next(x for x in app.selectbox if x.label == "Flat add-on adoption loss").select(0.2).run()
+    assert not app.exception
+    assert next(x for x in app.metric if x.label == "Stressed flat contribution").value == "$4,400"
+    assert next(x for x in app.metric if x.label == "Stressed metered contribution").value == "$8,000"
+    next(x for x in app.selectbox if x.label == "Metered adoption loss").select(0.2).run()
+    assert next(x for x in app.metric if x.label == "Stressed metered contribution").value == "$4,400"

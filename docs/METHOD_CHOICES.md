@@ -10,4 +10,6 @@
 
 **Why point-in-time labels?** A forecast origin cannot use filings published afterward. Feature vintages and training target availability are limited to that date; evaluation uses later restated outcomes and discloses that distinction.
 
-**Why a finance AI refusal test?** Matching source keys and numbers cannot show that an answer addresses a question or is appropriate. The harder test includes unsupported budgets, causal claims and malicious instructions; its 70% aggregate pass rate and refusal failures are more informative than the original easy 10/10 contract.
+**Why a finance AI refusal test?** A source reference can be valid and still fail to answer a question about unavailable budgets or causal drivers. The updated 3B/8B comparison separates raw model behavior from explicit policy replay; the first-pass questions expose substantial refusal failures, so the public app uses saved bridge outputs rather than a free-form finance endpoint.
+
+**Why vary both adoption penalties?** Flat pricing can deter light users while metering can deter users worried about variable bills. The 64-case grid varies both losses independently, and a separate lower-usage exit scenario changes the remaining flat-plan usage mix.

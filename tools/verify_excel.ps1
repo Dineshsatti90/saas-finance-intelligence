@@ -33,6 +33,10 @@ try {
     $taskExcel.CalculateFullRebuild()
     if ([Math]::Abs([double]$taskRisk.Range('D15').Value2 - 0.1) -gt 0.00001) { throw 'Zero dispersion tail share mismatch' }
     $taskRisk.Range('D7').Value2 = 1.2
+    $taskStress = $taskBook.Worksheets.Item('Adoption Stress')
+    if ([Math]::Abs([double]$taskStress.Range('F31').Value2 - 4400) -gt 0.01) { throw 'Flat adoption stress mismatch' }
+    if ([Math]::Abs([double]$taskStress.Range('G31').Value2 - 8000) -gt 0.01) { throw 'Metered baseline stress mismatch' }
+    if ([Math]::Abs([double]$taskStress.Range('F33').Value2 - [double]$taskStress.Range('G33').Value2) -gt 0.01) { throw 'Symmetric adoption losses should preserve parity' }
     $taskOriginalAccounts = [double]$taskPricing.Range('D7').Value2
     $taskPricing.Range('D7').Value2 = 0
     $taskExcel.CalculateFullRebuild()
@@ -40,7 +44,7 @@ try {
     $taskPricing.Range('D7').Value2 = $taskOriginalAccounts
     $taskExcel.CalculateFullRebuild()
     $taskBook.Save()
-    $taskResult = @{status='passed'; engine='Microsoft Excel COM'; version=$taskExcel.Version; checked_at=[DateTime]::UtcNow.ToString('o'); base_revenue=$taskBaseRevenue; downside_revenue=$taskDownsideRevenue; later_period_revenue=$taskLaterPeriodRevenue; checks=@('full_recalculation','case_selector','later_period_driver','equal_price_parity','risk_dispersion_recalculation','zero_adopter_boundary','inputs_restored_and_saved')}
+    $taskResult = @{status='passed'; engine='Microsoft Excel COM'; version=$taskExcel.Version; checked_at=[DateTime]::UtcNow.ToString('o'); base_revenue=$taskBaseRevenue; downside_revenue=$taskDownsideRevenue; later_period_revenue=$taskLaterPeriodRevenue; checks=@('full_recalculation','case_selector','later_period_driver','symmetric_adoption_stress','equal_price_parity','risk_dispersion_recalculation','zero_adopter_boundary','inputs_restored_and_saved')}
     $taskResult | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $taskVerificationPath -Encoding utf8
     $taskResult | ConvertTo-Json -Depth 5
 } catch {

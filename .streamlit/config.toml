@@ -1,0 +1,7 @@
+[client]
+toolbarMode = "viewer"
+
+[theme]
+base = "light"
+primaryColor = "#087F8C"
+font = "sans serif"

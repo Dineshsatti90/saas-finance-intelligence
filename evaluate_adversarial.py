@@ -9,6 +9,7 @@ import os
 import time
 import pandas as pd
 from planning import bridge, commentary
+from request_policy import preflight_reason
 
 ROOT = Path(__file__).resolve().parent
 
@@ -66,8 +67,9 @@ def make_cases() -> list[dict]:
     return cases
 
 
-def run() -> None:
-    cases = json.loads((ROOT / "eval/adversarial_cases.json").read_text())
+def run(cases_path: Path | None = None, target: Path | None = None) -> None:
+    cases_path = cases_path or ROOT / "eval/adversarial_cases_v2.json"
+    cases = json.loads(cases_path.read_text(encoding="utf-8"))
     report = {
         "status": "running",
         "model": os.environ.get("LLM_MODEL"),
@@ -76,21 +78,29 @@ def run() -> None:
         "temperature": 0,
         "seed": 42,
         "source_sha256": hashlib.sha256((ROOT / "planning.py").read_bytes()).hexdigest(),
-        "cases_sha256": hashlib.sha256((ROOT / "eval/adversarial_cases.json").read_bytes()).hexdigest(),
-        "scope": "10 historical bridges plus 10 unsupported/injection requests; routing, requested metric coverage and numeric contract. Not general narrative correctness.",
+        "cases_sha256": hashlib.sha256(cases_path.read_bytes()).hexdigest(),
+        "scope": "Model-only cell-reference evaluation plus explicit preflight-policy replay; v1 cases reused as regression, 16 v2 questions first-pass.",
+        "policy_source_sha256": hashlib.sha256((ROOT / "request_policy.py").read_bytes()).hexdigest(),
         "results": [],
     }
-    target = ROOT / "reports/ai_adversarial_evaluation.json"
+    target = target or ROOT / "reports/ai_adversarial_evaluation.json"
+    target.parent.mkdir(parents=True, exist_ok=True)
     for case in cases:
         start = time.perf_counter()
         row = {**case}
         try:
-            output = commentary(case["evidence"], case["question"])
+            output = commentary(case["evidence"], case["question"], enforce_policy=False)
             returned = {c["metric"] for c in output.get("raw_claims", [])}
             coverage = set(case["required_metrics"]).issubset(returned)
             row.update(output=output, passed=output["status"] == case["expected"] and coverage)
         except Exception as error:
             row.update(passed=False, error=str(error), blocked=True)
+        reason = preflight_reason(case["question"])
+        row["policy_rule"] = reason
+        row["guarded_replay_status"] = (
+            "unsupported" if reason else row.get("output", {}).get("status", "error")
+        )
+        row["guarded_replay_passed"] = (case["expected"] == "unsupported") if reason else row["passed"]
         row["elapsed_seconds"] = round(time.perf_counter() - start, 2)
         report["results"].append(row)
         target.write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -108,6 +118,11 @@ def run() -> None:
             r.get("output", {}).get("status") == "completed" for r in unsupported
         ),
         failures=[r["id"] for r in report["results"] if not r["passed"]],
+        guarded_replay_pass_rate=sum(r["guarded_replay_passed"] for r in report["results"]) / len(cases),
+        guarded_replay_refusal_rate=sum(r["guarded_replay_status"] == "unsupported" for r in unsupported)
+        / len(unsupported),
+        policy_false_refusals=sum(bool(r["policy_rule"]) for r in supported),
+        preflight_blocked=sum(bool(r["policy_rule"]) for r in report["results"]),
     )
     target.write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(json.dumps({k: v for k, v in report.items() if k != "results"}, indent=2))
@@ -116,6 +131,8 @@ def run() -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--freeze", action="store_true")
+    parser.add_argument("--cases", type=Path)
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     if args.freeze:
         (ROOT / "eval").mkdir(exist_ok=True)
@@ -123,4 +140,4 @@ if __name__ == "__main__":
             json.dumps(make_cases(), indent=2), encoding="utf-8"
         )
     else:
-        run()
+        run(args.cases, args.output)

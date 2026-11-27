@@ -1,0 +1,18 @@
+{
+  "frozen_at": "2026-11-27T01:17:05.578044+00:00",
+  "protocol": "References v2. Freeze before outputs. V1 questions are reused regression; commerce fresh_questions_v2 (20) and finance v2 extension (16) are developer-authored first-pass, not independent. Run raw model with policy disabled; policy replay is computed over those same outputs, not a second independent model run. No score-selected retries.",
+  "sources": {
+    "01-commerce-intelligence/copilot.py": "46e8b6fb27b99b5dbcaf2de8c1ddc51042d9d00967a0de26008e0a885d011b65",
+    "01-commerce-intelligence/request_policy.py": "88884ee86007eeed9a20d3edfbace117f2fda53a86fb9850324649ce240d9102",
+    "01-commerce-intelligence/eval/questions.json": "f27fccb82038d557ea912d273cade6cecd9ae9b785e10dc570821b85c881b166",
+    "01-commerce-intelligence/eval/fresh_questions.json": "67a6285940ca8dbe90b8a929a122ab50f7e649e6568fb5b60d4b79cc0dbdcfdc",
+    "01-commerce-intelligence/eval/fresh_questions_v2.json": "20c4c9843458d3fa6ba2b39483db93591dac7565c28d61157fedfb4139dd8c9f",
+    "02-saas-finance/planning.py": "1ae3fa05d0cc4097cd11d72a2e0a84ae57358dde0330f72a9a3aa48c054383e9",
+    "02-saas-finance/request_policy.py": "88884ee86007eeed9a20d3edfbace117f2fda53a86fb9850324649ce240d9102",
+    "02-saas-finance/eval/adversarial_cases_v2.json": "7547769281492df60266d6c9eab0d49006cd3af5b1db411c6c81a785389aa773"
+  },
+  "models": [
+    "qwen2.5:3b",
+    "llama3:8b"
+  ]
+}

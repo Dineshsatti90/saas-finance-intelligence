@@ -57,17 +57,37 @@ def risk_analysis(p: dict, sigma: float = 1.2, bins: int = 100) -> dict:
         )
     stress = []
     for multiplier in (0.75, 1.0, 1.25, 1.5):
-        for penalty in (0.0, 0.1, 0.2, 0.3):
-            mean = p["requests"] * multiplier
-            stress.append(
-                {
-                    "mean_usage_multiplier": multiplier,
-                    "metered_adoption_penalty": penalty,
-                    "flat_contribution": active * (p["subscription"] - mean * unit) - p["fixed_cost"],
-                    "metered_contribution": active * (1 - penalty) * mean * (equal_price - unit)
-                    - p["fixed_cost"],
-                }
-            )
+        for flat_penalty in (0.0, 0.1, 0.2, 0.3):
+            for metered_penalty in (0.0, 0.1, 0.2, 0.3):
+                mean = p["requests"] * multiplier
+                stress.append(
+                    {
+                        "mean_usage_multiplier": multiplier,
+                        "flat_adoption_penalty": flat_penalty,
+                        "metered_adoption_penalty": metered_penalty,
+                        "flat_adopters": active * (1 - flat_penalty),
+                        "metered_adopters": active * (1 - metered_penalty),
+                        "flat_contribution": active * (1 - flat_penalty) * (p["subscription"] - mean * unit)
+                        - p["fixed_cost"],
+                        "metered_contribution": active * (1 - metered_penalty) * mean * (equal_price - unit)
+                        - p["fixed_cost"],
+                    }
+                )
+    # Explicit usage-selection scenario: light-user exit raises the retained flat-plan mean.
+    flat_retained = usage[bins // 4 :]
+    selection_stress = {
+        "label": "Assumed light-user selection: flat loses bottom 25% by usage; metered loses 20% uniformly",
+        "flat_adopters": active * len(flat_retained) / bins,
+        "flat_conditional_mean_requests": float(flat_retained.mean()),
+        "flat_contribution": active
+        * len(flat_retained)
+        / bins
+        * (p["subscription"] - float(flat_retained.mean()) * unit)
+        - p["fixed_cost"],
+        "metered_adopters": active * 0.8,
+        "metered_contribution": active * 0.8 * p["requests"] * (equal_price - unit) - p["fixed_cost"],
+        "basis": "Illustrative selection mechanism only; not a willingness-to-pay model or observed demand estimate. Quantile cutoff uses the lower floor(bins/4) bins.",
+    }
     per_adopter_margin = p["requests"] * (equal_price - unit)
     return {
         "distribution": "assumed lognormal; exact conditional quantile-bin means",
@@ -94,6 +114,7 @@ def risk_analysis(p: dict, sigma: float = 1.2, bins: int = 100) -> dict:
         else None,
         "cohorts": rows,
         "stress_scenarios": stress,
+        "selection_stress": selection_stress,
         "limits": "Usage distribution, equal adoption and demand response are assumptions. Allocated fixed cost is not marginal cost. Metering protects variable unit margin only when price exceeds unit cost; it does not guarantee total profitability.",
     }
 
@@ -104,7 +125,6 @@ def calculate(case: dict, gross_margin: float) -> dict:
     active = p["customers"] * p["adoption"]
     if active <= 0 or p["requests"] <= 0 or p["core_mrr_per_account"] <= 0 or gross_margin <= 0:
         raise ValueError("Positive activity and core margin required for break-even analysis")
-    (p["input_tokens"] * p["input_rate"] + p["output_tokens"] * p["output_rate"]) / 1e6
     total = rows[0]["inference_cost"] + p["fixed_cost"]
     retained = total / (p["core_mrr_per_account"] * gross_margin)
     risk = risk_analysis(p, case.get("usage_risk", {}).get("log_sigma", 1.2))
@@ -159,7 +179,9 @@ At the equal price, top-decile mean contribution is ${risk["top_decile_flat_mean
 ## Adoption and usage stresses
 At unchanged usage, metering breaks even at {risk["metered_adoption_break_even"]:.2%} adoption of the eligible base, versus the assumed 20%. If metering reduces adoption by 20% relative, its contribution falls to $4,400/month while the unchanged flat case remains $8,000. If mean usage instead rises 50% with unchanged adoption, flat contribution is −$8,000 and metered contribution is $17,000. The latter bills more as usage rises; it is not an equal-realized-revenue comparison.
 
-`pricing_stress.csv` crosses four assumed usage levels and four relative metered-adoption penalties. Neither price elasticity nor usage suppression is estimated from real customers. Test willingness to pay, bill shock, cost per request and paid adoption before selecting a policy. A capped add-on with separately priced overages is a test hypothesis, not a proven optimum.
+`pricing_stress.csv` crosses four assumed usage levels, four flat-price adoption penalties and four metered-adoption penalties: 64 cases. Both policies can deter adoption. With the same 20% relative loss for each at baseline usage, both contribute $4,400; a flat-only loss reverses the earlier one-sided comparison. Fixed costs remain unchanged.
+
+Uniform penalties hold retained mean usage fixed. The additional selection scenario explicitly drops the lowest-usage quarter from flat pricing while metering loses 20% uniformly: flat retains {risk["selection_stress"]["flat_adopters"]:,.0f} adopters averaging {risk["selection_stress"]["flat_conditional_mean_requests"]:,.0f} requests and contributes ${risk["selection_stress"]["flat_contribution"]:,.0f}, while metered contributes ${risk["selection_stress"]["metered_contribution"]:,.0f}. This assumed selection mechanism illustrates adverse selection, not estimated willingness to pay. Neither price elasticity nor usage suppression is estimated from real customers. Test willingness to pay, bill shock, cost per request and paid adoption before selecting a policy. A capped add-on with separately priced overages is a test hypothesis, not a proven optimum.
 
 ## Reproduce
 Run `python pricing_case.py`. `usage_risk_cohorts.csv` contains exact conditional means in 100 equally weighted percentile bins; it is an analytical distribution scenario, not synthetic historical customer data. Tail shares use the lognormal closed form. `pricing_case.json` records assumptions and thresholds.

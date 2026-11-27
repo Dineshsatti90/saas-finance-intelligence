@@ -72,6 +72,7 @@ def build(output: Path | None = None, *, blank: bool = False) -> Path:
         "Actuals",
         "Checks",
         "Usage Risk",
+        "Adoption Stress",
     ]
     sheets = {name: book.add_worksheet(name) for name in names}
     cached: dict[tuple[str, str], Any] = {}
@@ -589,47 +590,62 @@ def build(output: Path | None = None, *, blank: bool = False) -> Path:
         "Baseline aggregate profit is equal. Heavy users lose money under flat pricing above the threshold; metering preserves variable margin only when price exceeds unit cost. Demand and usage responses are assumed, not measured.",
         styles["note"],
     )
+    sheets["Usage Risk"].merge_range(
+        "C30:G33",
+        "See Adoption Stress: 64 cases vary flat and metered adoption independently. Separate selection stress in the pricing memo models light-user exit; demand parameters are assumptions.",
+        styles["note"],
+    )
+    sheets["Usage Risk"].print_area("C2:G33")
+    stress_sheet = "Adoption Stress"
+    sheets[stress_sheet].set_column("C:H", 20)
+    value(stress_sheet, "C5", "Assumed demand responses; fixed costs stay constant", "warning")
     band(
-        "Usage Risk",
-        30,
+        stress_sheet,
+        6,
         [
             "Mean usage multiplier",
-            "Metered adoption penalty",
+            "Flat adoption loss",
+            "Metered adoption loss",
             "Flat contribution USD",
-            "Metered contribution USD",
+            "Metered contrib USD",
             "Metered less flat USD",
         ],
     )
-    for r, item in enumerate(risk["stress_scenarios"], 31):
-        value("Usage Risk", f"C{r}", item["mean_usage_multiplier"], "input")
-        value("Usage Risk", f"D{r}", item["metered_adoption_penalty"], "input_pct")
+    sheets[stress_sheet].set_row(5, 42)
+    for r, item in enumerate(risk["stress_scenarios"], 7):
+        value(stress_sheet, f"C{r}", item["mean_usage_multiplier"], "input")
+        value(stress_sheet, f"D{r}", item["flat_adoption_penalty"], "input_pct")
+        value(stress_sheet, f"E{r}", item["metered_adoption_penalty"], "input_pct")
         formula(
-            "Usage Risk",
-            f"E{r}",
-            f'=IFERROR($D$9*($D$11-$D$8*C{r}*$D$10)-$D$9*$D$13,"n.a.")',
+            stress_sheet,
+            f"F{r}",
+            f"=IFERROR('Usage Risk'!$D$9*(1-D{r})*('Usage Risk'!$D$11-'Usage Risk'!$D$8*C{r}*'Usage Risk'!$D$10)-'AI Pricing'!$D$16,\"n.a.\")",
             "n.a." if blank else item["flat_contribution"],
             "whole",
         )
         formula(
-            "Usage Risk",
-            f"F{r}",
-            f'=IFERROR($D$9*(1-D{r})*$D$8*C{r}*($D$12-$D$10)-$D$9*$D$13,"n.a.")',
+            stress_sheet,
+            f"G{r}",
+            f"=IFERROR('Usage Risk'!$D$9*(1-E{r})*'Usage Risk'!$D$8*C{r}*('Usage Risk'!$D$12-'Usage Risk'!$D$10)-'AI Pricing'!$D$16,\"n.a.\")",
             "n.a." if blank else item["metered_contribution"],
             "whole",
         )
         formula(
-            "Usage Risk",
-            f"G{r}",
-            f'=IFERROR(F{r}-E{r},"n.a.")',
+            stress_sheet,
+            f"H{r}",
+            f'=IFERROR(G{r}-F{r},"n.a.")',
             "n.a." if blank else item["metered_contribution"] - item["flat_contribution"],
             "whole",
         )
-    sheets["Usage Risk"].merge_range(
-        "C48:G50",
-        "All stresses are scenarios. Increased usage makes metering bill more; stress cases are not equal realized revenue. Fixed costs do not fall with adoption. Source: inputs/illustrative_case.json and reports/pricing_case.json.",
+    sheets[stress_sheet].merge_range(
+        "C73:H75",
+        "Penalties are relative to baseline adoption, not percentage-point reductions. Uniform loss holds retained mean usage fixed. The separate light-user selection case in reports/pricing_decision.md changes the retained mix. All demand responses are illustrative.",
         styles["note"],
     )
-    sheets["Usage Risk"].print_area("C2:G50")
+    sheets[stress_sheet].print_area("C2:H75")
+    sheets[stress_sheet].repeat_rows(0, 5)
+    sheets[stress_sheet].fit_to_pages(1, 0)
+    sheets[stress_sheet].freeze_panes(6, 2)
 
     # Primary review: real financials above, separate illustrative pricing result below.
     value("Summary", "C5", "Salesforce actuals and planning assumptions", "note")

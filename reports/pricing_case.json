@@ -768,101 +768,590 @@
     "stress_scenarios": [
       {
         "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.0,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 2000.0,
         "flat_contribution": 16000.0,
         "metered_contribution": 3500.000000000002
       },
       {
         "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.1,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1800.0,
         "flat_contribution": 16000.0,
         "metered_contribution": 2150.000000000002
       },
       {
         "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.2,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1600.0,
         "flat_contribution": 16000.0,
         "metered_contribution": 800.0000000000018
       },
       {
         "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.3,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1400.0,
         "flat_contribution": 16000.0,
         "metered_contribution": -549.9999999999982
       },
       {
-        "mean_usage_multiplier": 1.0,
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.1,
         "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": 13400.0,
+        "metered_contribution": 3500.000000000002
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": 13400.0,
+        "metered_contribution": 2150.000000000002
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": 13400.0,
+        "metered_contribution": 800.0000000000018
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": 13400.0,
+        "metered_contribution": -549.9999999999982
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": 10800.0,
+        "metered_contribution": 3500.000000000002
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": 10800.0,
+        "metered_contribution": 2150.000000000002
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": 10800.0,
+        "metered_contribution": 800.0000000000018
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": 10800.0,
+        "metered_contribution": -549.9999999999982
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": 8200.0,
+        "metered_contribution": 3500.000000000002
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": 8200.0,
+        "metered_contribution": 2150.000000000002
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": 8200.0,
+        "metered_contribution": 800.0000000000018
+      },
+      {
+        "mean_usage_multiplier": 0.75,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": 8200.0,
+        "metered_contribution": -549.9999999999982
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.0,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 2000.0,
         "flat_contribution": 8000.0,
         "metered_contribution": 8000.000000000004
       },
       {
         "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.1,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1800.0,
         "flat_contribution": 8000.0,
         "metered_contribution": 6200.000000000002
       },
       {
         "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.2,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1600.0,
         "flat_contribution": 8000.0,
         "metered_contribution": 4400.000000000002
       },
       {
         "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.3,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1400.0,
         "flat_contribution": 8000.0,
         "metered_contribution": 2600.000000000002
       },
       {
-        "mean_usage_multiplier": 1.25,
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.1,
         "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": 6200.0,
+        "metered_contribution": 8000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": 6200.0,
+        "metered_contribution": 6200.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": 6200.0,
+        "metered_contribution": 4400.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": 6200.0,
+        "metered_contribution": 2600.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": 4400.0,
+        "metered_contribution": 8000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": 4400.0,
+        "metered_contribution": 6200.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": 4400.0,
+        "metered_contribution": 4400.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": 4400.0,
+        "metered_contribution": 2600.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": 2600.0,
+        "metered_contribution": 8000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": 2600.0,
+        "metered_contribution": 6200.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": 2600.0,
+        "metered_contribution": 4400.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.0,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": 2600.0,
+        "metered_contribution": 2600.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.0,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 2000.0,
         "flat_contribution": 0.0,
         "metered_contribution": 12500.000000000004
       },
       {
         "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.1,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1800.0,
         "flat_contribution": 0.0,
         "metered_contribution": 10250.000000000004
       },
       {
         "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.2,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1600.0,
         "flat_contribution": 0.0,
         "metered_contribution": 8000.000000000004
       },
       {
         "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.3,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1400.0,
         "flat_contribution": 0.0,
         "metered_contribution": 5750.000000000002
       },
       {
-        "mean_usage_multiplier": 1.5,
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.1,
         "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": -1000.0,
+        "metered_contribution": 12500.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": -1000.0,
+        "metered_contribution": 10250.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": -1000.0,
+        "metered_contribution": 8000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": -1000.0,
+        "metered_contribution": 5750.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": -2000.0,
+        "metered_contribution": 12500.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": -2000.0,
+        "metered_contribution": 10250.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": -2000.0,
+        "metered_contribution": 8000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": -2000.0,
+        "metered_contribution": 5750.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": -3000.0,
+        "metered_contribution": 12500.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": -3000.0,
+        "metered_contribution": 10250.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": -3000.0,
+        "metered_contribution": 8000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.25,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": -3000.0,
+        "metered_contribution": 5750.000000000002
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.0,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 2000.0,
         "flat_contribution": -8000.0,
         "metered_contribution": 17000.000000000004
       },
       {
         "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.1,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1800.0,
         "flat_contribution": -8000.0,
         "metered_contribution": 14300.000000000004
       },
       {
         "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.2,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1600.0,
         "flat_contribution": -8000.0,
         "metered_contribution": 11600.000000000004
       },
       {
         "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.0,
         "metered_adoption_penalty": 0.3,
+        "flat_adopters": 2000.0,
+        "metered_adopters": 1400.0,
         "flat_contribution": -8000.0,
+        "metered_contribution": 8900.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": -8200.0,
+        "metered_contribution": 17000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": -8200.0,
+        "metered_contribution": 14300.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": -8200.0,
+        "metered_contribution": 11600.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.1,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1800.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": -8200.0,
+        "metered_contribution": 8900.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": -8400.0,
+        "metered_contribution": 17000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": -8400.0,
+        "metered_contribution": 14300.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": -8400.0,
+        "metered_contribution": 11600.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.2,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1600.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": -8400.0,
+        "metered_contribution": 8900.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.0,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 2000.0,
+        "flat_contribution": -8600.0,
+        "metered_contribution": 17000.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.1,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1800.0,
+        "flat_contribution": -8600.0,
+        "metered_contribution": 14300.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.2,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1600.0,
+        "flat_contribution": -8600.0,
+        "metered_contribution": 11600.000000000004
+      },
+      {
+        "mean_usage_multiplier": 1.5,
+        "flat_adoption_penalty": 0.3,
+        "metered_adoption_penalty": 0.3,
+        "flat_adopters": 1400.0,
+        "metered_adopters": 1400.0,
+        "flat_contribution": -8600.0,
         "metered_contribution": 8900.000000000004
       }
     ],
+    "selection_stress": {
+      "label": "Assumed light-user selection: flat loses bottom 25% by usage; metered loses 20% uniformly",
+      "flat_adopters": 1500.0,
+      "flat_conditional_mean_requests": 2585.5160620203083,
+      "flat_contribution": -3526.192744243698,
+      "metered_adopters": 1600.0,
+      "metered_contribution": 4400.000000000002,
+      "basis": "Illustrative selection mechanism only; not a willingness-to-pay model or observed demand estimate. Quantile cutoff uses the lower floor(bins/4) bins."
+    },
     "limits": "Usage distribution, equal adoption and demand response are assumptions. Allocated fixed cost is not marginal cost. Metering protects variable unit margin only when price exceeds unit cost; it does not guarantee total profitability."
   },
   "retention_model": "One full year of core gross profit per retained account; timing, discounting and retention effects are unobserved.",
