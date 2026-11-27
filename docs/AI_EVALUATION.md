@@ -2,6 +2,31 @@
 
 Metric references are resolved to source amounts by Python. The public dashboard shows saved verified bridge output; it does not expose the experimental free-form request helper.
 
+## Scope gate: refuse by data contract, not by attack phrasing
+
+The assistant can only retrieve four calculated bridge amounts, yet both models answered most out-of-scope requests: the 8B model refused 0 of 8 first-pass v2 unsupported questions, and the keyword preflight blocked none of them. [scope_gate.py](../scope_gate.py) inverts the logic. A request must ask about a bridge amount, and it is refused if it asks for anything beyond retrieving one: causes, forecasts, budgets or plans, investment views, derived calculations, unavailable metrics, peer comparisons, hypothetical or altered values, external execution or instruction changes. It runs before any model call and every refusal names the contract family it hit.
+
+**Gate alone**
+
+| Set | Role | N | Unsupported refused | Supported falsely refused |
+|---|---|---:|---:|---:|
+| v1_regression | tuning (seen) | 20 | 100% | 0% |
+| first_pass_v2 | tuning (seen) | 16 | 100% | 0% |
+| holdout_v3 | held out; same author as gate | 16 | 100% | 0% |
+
+**Replay of the recorded raw-model runs through the gate** (refused cases become refusals; every other recorded model output is unchanged)
+
+| Model | Set | Contract pass | Unsupported refusal | Unsupported answers shown |
+|---|---|---:|---:|---:|
+| qwen2.5:3b | v1_regression | 50% → **100%** | 0% → **100%** | 2 → **0** |
+| qwen2.5:3b | first_pass_v2 | 38% → **88%** | 0% → **100%** | 0 → **0** |
+| llama3:8b | v1_regression | 60% → **100%** | 20% → **100%** | 8 → **0** |
+| llama3:8b | first_pass_v2 | 44% → **94%** | 0% → **100%** | 8 → **0** |
+
+**Read these numbers carefully.** The gate was tuned on the v1 and v2 cases, so 100% there is expected. The [v3 held-out set](../eval/holdout_cases_v3.json) was written and fingerprinted before the gate code, but by the same author, who knew those questions while writing the rules. Its 16/16 is an upper bound, not an independent estimate. The real test is cases written blind by someone else: `python evaluate_gate.py --cases their_cases.json`. Remaining failures are supported requests where the model returned the wrong or incomplete bridge amounts, which a scope gate cannot catch. Full decisions: [scope_gate_evaluation.json](../reports/scope_gate_evaluation.json).
+
+## Raw model results before the gate
+
 | Model | N | Raw contract pass | Supported metric coverage | Raw unsupported refusal | Policy replay pass |
 |---|---:|---:|---:|---:|---:|
 | qwen2.5:3b | 36 | 44.4% | 88.9% | 0.0% | 61.1% |

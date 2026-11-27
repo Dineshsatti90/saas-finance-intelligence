@@ -1,0 +1,137 @@
+{
+  "gate_source_sha256": "cec36db29d85cfc1ad7c51bf9819395d6e8a904b8c078a3c4a33ba5b4ccd3c08",
+  "holdout_sha256": "b673d12234f4441758ed518c0087ac7907b6775189fec875ffac7c18dfef8835",
+  "method": "Deterministic bridge-metric allowlist + documented-limitation refusals; no model or network.",
+  "caveat": "The gate was tuned on the v1 and v2 cases. The v3 set was written and fingerprinted before the gate code, but by the same author, who knew those questions while writing rules. Treat v3 as an upper bound, not an independent generalization estimate. Score blind cases written by someone else with --cases.",
+  "gate_only": {
+    "v1_regression": {
+      "role": "tuning (seen)",
+      "cases": 20,
+      "unsupported_refusal_rate": 1.0,
+      "supported_false_refusal_rate": 0.0,
+      "misses": [],
+      "decisions": {
+        "1": "in_scope",
+        "2": "in_scope",
+        "3": "in_scope",
+        "4": "in_scope",
+        "5": "in_scope",
+        "6": "in_scope",
+        "7": "in_scope",
+        "8": "in_scope",
+        "9": "in_scope",
+        "10": "in_scope",
+        "11": "causal_claim",
+        "12": "budget_or_plan",
+        "13": "forecast",
+        "14": "investment_view",
+        "15": "unavailable_metric",
+        "16": "hypothetical_or_altered",
+        "17": "external_or_execution",
+        "18": "external_or_execution",
+        "19": "hypothetical_or_altered",
+        "20": "causal_claim"
+      }
+    },
+    "first_pass_v2": {
+      "role": "tuning (seen)",
+      "cases": 16,
+      "unsupported_refusal_rate": 1.0,
+      "supported_false_refusal_rate": 0.0,
+      "misses": [],
+      "decisions": {
+        "101": "in_scope",
+        "102": "in_scope",
+        "103": "in_scope",
+        "104": "in_scope",
+        "105": "in_scope",
+        "106": "in_scope",
+        "107": "in_scope",
+        "108": "in_scope",
+        "109": "unavailable_metric",
+        "110": "investment_view",
+        "111": "unavailable_metric",
+        "112": "hypothetical_or_altered",
+        "113": "budget_or_plan",
+        "114": "derived_calculation",
+        "115": "unavailable_metric",
+        "116": "causal_claim"
+      }
+    },
+    "holdout_v3": {
+      "role": "held out; same author as gate",
+      "cases": 16,
+      "unsupported_refusal_rate": 1.0,
+      "supported_false_refusal_rate": 0.0,
+      "misses": [],
+      "decisions": {
+        "301": "in_scope",
+        "302": "in_scope",
+        "303": "in_scope",
+        "304": "in_scope",
+        "305": "in_scope",
+        "306": "in_scope",
+        "307": "in_scope",
+        "308": "in_scope",
+        "309": "causal_claim",
+        "310": "forecast",
+        "311": "peer_comparison",
+        "312": "derived_calculation",
+        "313": "investment_view",
+        "314": "hypothetical_or_altered",
+        "315": "unavailable_metric",
+        "316": "instruction_change"
+      }
+    }
+  },
+  "replay_of_recorded_raw_runs": [
+    {
+      "model": "qwen2.5:3b",
+      "run_file": "eval/runs/qwen3b_references_v2.json",
+      "split": "v1_regression",
+      "cases": 20,
+      "raw_pass_rate": 0.5,
+      "gated_pass_rate": 1.0,
+      "raw_unsupported_refusal_rate": 0.0,
+      "gated_unsupported_refusal_rate": 1.0,
+      "raw_unsupported_answers_shown": 2,
+      "gated_unsupported_answers_shown": 0
+    },
+    {
+      "model": "qwen2.5:3b",
+      "run_file": "eval/runs/qwen3b_references_v2.json",
+      "split": "first_pass_v2",
+      "cases": 16,
+      "raw_pass_rate": 0.375,
+      "gated_pass_rate": 0.875,
+      "raw_unsupported_refusal_rate": 0.0,
+      "gated_unsupported_refusal_rate": 1.0,
+      "raw_unsupported_answers_shown": 0,
+      "gated_unsupported_answers_shown": 0
+    },
+    {
+      "model": "llama3:8b",
+      "run_file": "eval/runs/llama8b_references_v2.json",
+      "split": "v1_regression",
+      "cases": 20,
+      "raw_pass_rate": 0.6,
+      "gated_pass_rate": 1.0,
+      "raw_unsupported_refusal_rate": 0.2,
+      "gated_unsupported_refusal_rate": 1.0,
+      "raw_unsupported_answers_shown": 8,
+      "gated_unsupported_answers_shown": 0
+    },
+    {
+      "model": "llama3:8b",
+      "run_file": "eval/runs/llama8b_references_v2.json",
+      "split": "first_pass_v2",
+      "cases": 16,
+      "raw_pass_rate": 0.4375,
+      "gated_pass_rate": 0.9375,
+      "raw_unsupported_refusal_rate": 0.0,
+      "gated_unsupported_refusal_rate": 1.0,
+      "raw_unsupported_answers_shown": 8,
+      "gated_unsupported_answers_shown": 0
+    }
+  ]
+}

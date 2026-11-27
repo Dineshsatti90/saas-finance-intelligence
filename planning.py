@@ -9,6 +9,7 @@ import os
 import urllib.request
 import duckdb
 from request_policy import preflight_reason
+from scope_gate import scope_decision
 
 ROOT = Path(__file__).resolve().parent
 
@@ -179,6 +180,15 @@ def commentary(
             "rule": reason,
             "verified_statements": [],
         }
+    if enforce_policy:
+        allowed, scope_reason = scope_decision(question)
+        if not allowed:
+            return {
+                "status": "unsupported",
+                "refusal_origin": "scope_gate",
+                "rule": scope_reason,
+                "verified_statements": [],
+            }
     model = os.environ.get("LLM_MODEL")
     if not model:
         return {"status": "not_run_missing_model", "verified_statements": []}
