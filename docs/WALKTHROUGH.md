@@ -11,3 +11,5 @@ Open the [live dashboard](https://dineshsatti90-saas-finance.streamlit.app/). If
 | 2:00–2:30 | Decision & AI record; Excel Usage Risk | Test a capped add-on against equal-baseline-price metering. Show live Excel formulas and the harder AI evaluation, including refusal failures. Cash accumulation is not a full cash-balance forecast. |
 
 Interview close: “The policy decision depends on observed usage and willingness to pay; equal baseline profit alone cannot establish which pricing structure is best.”
+
+[Short silent preview animation](screenshots/walkthrough.gif). This is a sequence of actual dashboard screenshots, not a narrated video. The timing table above is a 2–3 minute presentation guide.

@@ -16,9 +16,9 @@ Real SEC financials, expanding-window forecast evaluation and a populated Excel 
 2. **Equal pricing removes the apparent metering advantage:** $0.0125/request equals $25 at 2,000 requests; both contribute $8,000/month at equal adoption. Under an explicitly assumed lognormal distribution, the heaviest 10% use 46.8% of requests. Flat pricing loses allocated contribution above 2,500 requests/account; metering shifts heavy-usage risk but can reduce adoption.
 3. **Bundling needs evidence:** covering its $42,000 monthly cost requires about 541 extra accounts retained for a full year—5.41 percentage points of annual churn improvement across the assumed 10,000-account base—in the simplified retention model.
 
-![Project preview](docs/screenshots/overview.jpg)
+![Project preview](docs/screenshots/walkthrough.gif)
 
-**[Two-minute decision walkthrough](docs/WALKTHROUGH.md)** · [Method choices for interviews](docs/METHOD_CHOICES.md)
+**[Two-minute decision walkthrough](docs/WALKTHROUGH.md)** · [Method choices for interviews](docs/METHOD_CHOICES.md) · [Resume and post draft](docs/PORTFOLIO_COPY.md)
 
 **Stack:** Python · SQL · DuckDB · scikit-learn · XlsxWriter · Excel · Streamlit · optional local/API LLM.
 
